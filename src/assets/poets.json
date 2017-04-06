@@ -3,6 +3,18 @@
     "poets":[
         {
             "name":"Li Bai",
+            "image":"assets/images/libai.jpg",
+            "poems":
+            [
+                "THE HARD ROAD",
+                "HARD IS THE WAY OF THE WORLD II",
+                "HARD IS THE WAY OF THE WORLD III"
+
+            ]
+        },
+         {
+            "name":"Du Fu",
+            "image":"assets/images/dufu.jpg",
             "poems":
             [
                 "THE HARD ROAD",

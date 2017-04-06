@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {PoetService} from "../../providers/poet-service";
 
 /*
   Generated class for the AuthorList page.
@@ -13,10 +14,24 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AuthorListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public poets : any;
+  
+  constructor(public navCtrl: NavController, 
+  public navParams: NavParams, 
+  public poetService :PoetService) {
+
+        this.poets = this.poetService.getPoems("Li Bai");
+ 
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AuthorListPage');
+    
+    
+
   }
+
+
 
 }

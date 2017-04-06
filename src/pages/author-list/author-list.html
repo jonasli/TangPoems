@@ -16,32 +16,15 @@
 
     <ion-list-header>Poet List</ion-list-header>
 
-    <ion-item>
+    <ion-item *ngFor = "let p of poets">
       <ion-thumbnail item-left>
-        <img src="assets/images/libai.jpg">
+        <img src="p.image">
       </ion-thumbnail>
-      <h2>Li Bai</h2>
-      <p>Li Bai (ca 705 - 762), also called Li Po, is probably China's most famous poet. A great deal has been written about him. This commentary focuses on his connection to the qin. In this regard Ronald Egan writes (Controversy, p.53), "In the first centuries of the Tang dynasty, the poets Meng Haoran and Li Bo further promoted the cultivation of a special literati affiliation with this instrument."</p>
+      <h2>{{p.name}}</h2>
+      <p>{{p.bio}}</p>
       <button ion-button clear item-right>View</button>
     </ion-item>
- 
-    <ion-item>
-      <ion-thumbnail item-left>
-        <img src="assets/images/dufu.jpg">
-      </ion-thumbnail>
-      <h2>Du Fu</h2>
-      <p>Du Fu (Wade–Giles: Tu Fu; Chinese: 杜甫; 712 – 770) was a prominent Chinese poet of the Tang dynasty. Along with Li Bai (Li Po), he is frequently called the greatest of the Chinese poets</p>
-      <button ion-button clear item-right>View</button>
-    </ion-item>
-
-   <ion-item>
-      <ion-thumbnail item-left>
-        <img src="assets/images/yuanzhen.png">
-      </ion-thumbnail>
-      <h2>Yuan Zhen</h2>
-      <p>Yuan Zhen (Chinese: 元稹; pinyin: Yuán Zhěn; Wade–Giles: Yüan Chen) (779 – September 2, 831[1]), courtesy name Weizhi (微之), was a politician of the middle Tang Dynasty, but is more known as an important Chinese writer and poet.</p>
-      <button ion-button clear item-right>View</button>
-    </ion-item>
+  
 
   </ion-list>
  

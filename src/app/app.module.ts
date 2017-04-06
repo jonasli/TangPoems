@@ -5,7 +5,7 @@ import {Http} from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AuthorListPage } from '../pages/author-list/author-list';
-
+import {PoetService} from '../providers/poet-service';
 
 @NgModule({
   declarations: [
@@ -29,6 +29,8 @@ import { AuthorListPage } from '../pages/author-list/author-list';
     // TabIconTextContentPage,
     // IconTextPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler,
+     useClass: IonicErrorHandler ,
+      }, PoetService]
 })
 export class AppModule {}

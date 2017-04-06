@@ -3,10 +3,8 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import {TranslateService} from 'ng2-translate';
 
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
-import { Page3 } from '../pages/page3/page3';
-import { TabIconTextContentPage } from '../pages/footerbar/footerbar';
+ 
+import { AuthorListPage } from '../pages/author-list/author-list';
 
 
 @Component({
@@ -16,7 +14,7 @@ export class MyApp {
   
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Page1;
+  rootPage: any = AuthorListPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -55,14 +53,14 @@ export class MyApp {
    
     //used for an example of ngFor and navigation
     this.pages = [
-      { title: pageTitle[0], component: Page1 },
-      { title: pageTitle[1], component: Page2 },
-      { title: pageTitle[2], component: Page3 },
-      { title: pageTitle[3], component: Page1 },
-      { title: pageTitle[4], component: Page1 },
-      { title: pageTitle[5], component: Page1 },
-      { title: pageTitle[6], component: Page1 },
-      { title: pageTitle[7], component: TabIconTextContentPage }
+      { title: pageTitle[0], component: AuthorListPage },
+      { title: pageTitle[1], component: AuthorListPage },
+      { title: pageTitle[2], component: AuthorListPage },
+      { title: pageTitle[3], component: AuthorListPage },
+      { title: pageTitle[4], component: AuthorListPage },
+      { title: pageTitle[5], component: AuthorListPage },
+      { title: pageTitle[6], component: AuthorListPage },
+      { title: pageTitle[7], component: AuthorListPage }
     ];
   }
 

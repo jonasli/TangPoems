@@ -1,0 +1,15 @@
+{
+
+    "poets":[
+        {
+            "name":"Li Bai",
+            "poems":
+            [
+                "THE HARD ROAD",
+                "HARD IS THE WAY OF THE WORLD II",
+                "HARD IS THE WAY OF THE WORLD III"
+
+            ]
+        }
+    ]
+}

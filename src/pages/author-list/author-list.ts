@@ -14,14 +14,16 @@ import {PoetService} from "../../providers/poet-service";
 })
 export class AuthorListPage {
 
-  public poets : any;
+  public poets : any = [];
   
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
   public poetService :PoetService) {
 
-        this.poets = this.poetService.getPoems("Li Bai");
- 
+        this.poetService.getPoets("Li Bai")
+        .subscribe(data => {
+          this.poets = data;
+        });
 
   }
 

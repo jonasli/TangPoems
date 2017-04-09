@@ -29,8 +29,8 @@
        <ion-list-header>
         Poems List
       </ion-list-header>
-      <button ion-item *ngFor = "let p of poet.poems">
-        <ion-icon name="cart" item-left></ion-icon>
+      <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
+        
         {{p}}
       </button>
 

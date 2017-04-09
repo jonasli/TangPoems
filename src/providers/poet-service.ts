@@ -40,8 +40,8 @@ export class PoetService {
           .get(poemurl)
           .map(response=>{
             console.log(response.text());
-            let poems= <IPoem[]>response.json().poems;
-            return poems.filter(item=>item.name==name);
+            let poems= <IPoem[]>response.json().Fivecharacterancientverse;
+            return poems.filter(item=>item.name=="感遇（其二）");
           })
       
     }

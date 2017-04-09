@@ -9,13 +9,17 @@ import { PoetDetailPage } from '../pages/poet-detail/poet-detail';
 import {PoetDetailComponent} from '../components/poet-detail/poet-detail';
 import {PoetService} from '../providers/poet-service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { PoemDetailComponent } from "../components/poem-detail/poem-detail";
+import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
 
 @NgModule({
   declarations: [
     MyApp,
     AuthorListPage,
     PoetDetailPage,
-    PoetDetailComponent
+    PoemDetailPage,
+    PoetDetailComponent,
+    PoemDetailComponent
     // TabIconTextContentPage,
     // IconTextPage
   ],
@@ -32,7 +36,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
     MyApp,
     AuthorListPage,
     PoetDetailPage,
-    PoetDetailComponent
+    PoemDetailPage,
+    PoetDetailComponent,
+    PoemDetailComponent
     // TabIconTextContentPage,
     // IconTextPage
   ],

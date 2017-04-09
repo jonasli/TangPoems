@@ -20,11 +20,23 @@
     </ion-card-content>
 
     <ion-item>
-      <ion-icon name='musical-notes' item-left style="color: #d03e84"></ion-icon>
+      <ion-icon name='document' item-left style="color: #d03e84"></ion-icon>
       Poems
       <ion-badge item-right>{{poet.poems.length}}</ion-badge>
     </ion-item>
  
+    <ion-list>
+       <ion-list-header>
+        Poems List
+      </ion-list-header>
+      <button ion-item *ngFor = "let p of poet.poems">
+        <ion-icon name="cart" item-left></ion-icon>
+        {{p}}
+      </button>
+
+
+
+    </ion-list>
 
   </ion-card>
 

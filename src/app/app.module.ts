@@ -8,6 +8,7 @@ import { AuthorListPage } from '../pages/author-list/author-list';
 import { PoetDetailPage } from '../pages/poet-detail/poet-detail';
 import {PoetDetailComponent} from '../components/poet-detail/poet-detail';
 import {PoetService} from '../providers/poet-service';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,6 @@ import {PoetService} from '../providers/poet-service';
   ],
   providers: [{provide: ErrorHandler,
      useClass: IonicErrorHandler ,
-      }, PoetService]
+      }, PoetService,InAppBrowser]
 })
 export class AppModule {}

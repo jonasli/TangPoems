@@ -4,6 +4,7 @@
         {
             "name":"Li Bai",
             "image":"/assets/images/libai.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Li_Bai",
             "poems":
             [
                 "THE HARD ROAD",
@@ -15,6 +16,7 @@
          {
             "name":"Du Fu",
             "image":"/assets/images/dufu.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Du_Fu",
             "poems":
             [
                 "THE HARD ROAD",

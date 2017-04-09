@@ -1,22 +1,22 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Badges</ion-title>
+    <ion-title>{{poet.name}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
 
   <ion-card>
-
+     b bc
     <img src="{{poet.image}}"/>
 
     <ion-card-content>
-      <ion-card-title>
-        {{poet.name}}
+      <ion-card-title >
+       <button ion-button outline (click)="viewBiography(poet.bio)">Biography</button>
       </ion-card-title>
-      <p>
+     <!-- <p>
         {{poet.bio}}
-      </p>
+      </p>-->
     </ion-card-content>
 
     <ion-item>

@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { IPoet } from '../../models/IPoet';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 /*
   Generated class for the PoetDetail component.
 
@@ -13,13 +14,18 @@ import { IPoet } from '../../models/IPoet';
 export class PoetDetailComponent {
 
   @Input() poet: IPoet  ;
+  browser:any;
+
   
-  
-  constructor() {
+  constructor(private iab: InAppBrowser) {
     console.log('Hello PoetDetail Component');
     
   }
 
   
-
+  viewBiography(url:string )
+  {
+      this.browser = this.iab.create( url, "_self", "closebuttoncaption=Done" );
+ 
+  }
 }

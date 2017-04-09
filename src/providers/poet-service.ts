@@ -3,8 +3,10 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
 import { IPoet } from '../models/IPoet';
+import { IPoem } from '../models/IPoem';
  
-const url = "../assets/poets.json"  ;
+const poeturl = "../assets/poets.json"  ;
+const poemurl = "../assets/poems_cn.json"  ;
 /*
   Generated class for the PoetService provider.
 
@@ -23,14 +25,25 @@ export class PoetService {
 
   getPoets(poet:string) : Observable<IPoet[]>{
     return this.http
-    .get(url)
+    .get(poeturl)
     .map(response=>{
       console.log(response.text());
       return <IPoet[]>response.json().poets;
     })
     
-    
+   
 
   }
+
+   getPoems(name:string) : Observable<IPoem[]>{
+      return this.http
+          .get(poemurl)
+          .map(response=>{
+            console.log(response.text());
+            let poems= <IPoem[]>response.json().poems;
+            return poems.filter(item=>item.name==name);
+          })
+      
+    }
 
 }

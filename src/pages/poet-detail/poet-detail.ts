@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PoetDetail } from '../../components/poet-detail'
-import { IPoet } from "../models/IPoet";
+import { IPoet } from "../../models/IPoet";
 /*
   Generated class for the PoetDetail page.
 

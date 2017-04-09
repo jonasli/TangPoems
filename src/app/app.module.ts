@@ -6,13 +6,15 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AuthorListPage } from '../pages/author-list/author-list';
 import { PoetDetailPage } from '../pages/poet-detail/poet-detail';
+import {PoetDetailComponent} from '../components/poet-detail/poet-detail';
 import {PoetService} from '../providers/poet-service';
 
 @NgModule({
   declarations: [
     MyApp,
     AuthorListPage,
-    PoetDetailPage
+    PoetDetailPage,
+    PoetDetailComponent
     // TabIconTextContentPage,
     // IconTextPage
   ],
@@ -28,7 +30,8 @@ import {PoetService} from '../providers/poet-service';
   entryComponents: [
     MyApp,
     AuthorListPage,
-    PoetDetailPage
+    PoetDetailPage,
+    PoetDetailComponent
     // TabIconTextContentPage,
     // IconTextPage
   ],

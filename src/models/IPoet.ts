@@ -1,4 +1,4 @@
-interface IPoet {
+export interface IPoet {
   name:string;
   image:string;
   bio:string;

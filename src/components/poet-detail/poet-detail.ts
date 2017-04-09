@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { IPoet } from '../models/IPoet';
+import { IPoet } from '../../models/IPoet';
 /*
   Generated class for the PoetDetail component.
 

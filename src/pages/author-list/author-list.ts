@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {PoetService} from "../../providers/poet-service";
 import { PoetDetailPage } from "../poet-detail/poet-detail"
-import { IPoet } from "../models/IPoet";
+import { IPoet } from "../../models/IPoet";
 /*
   Generated class for the AuthorList page.
 

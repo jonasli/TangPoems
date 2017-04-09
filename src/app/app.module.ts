@@ -5,12 +5,14 @@ import {Http} from '@angular/http';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { AuthorListPage } from '../pages/author-list/author-list';
+import { PoetDetailPage } from '../pages/poet-detail/poet-detail';
 import {PoetService} from '../providers/poet-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    AuthorListPage
+    AuthorListPage,
+    PoetDetailPage
     // TabIconTextContentPage,
     // IconTextPage
   ],
@@ -25,7 +27,8 @@ import {PoetService} from '../providers/poet-service';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AuthorListPage
+    AuthorListPage,
+    PoetDetailPage
     // TabIconTextContentPage,
     // IconTextPage
   ],

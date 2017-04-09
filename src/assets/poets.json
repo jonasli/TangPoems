@@ -3,7 +3,7 @@
     "poets":[
         {
             "name":"Li Bai",
-            "image":"assets/images/libai.jpg",
+            "image":"/assets/images/libai.jpg",
             "poems":
             [
                 "THE HARD ROAD",
@@ -14,7 +14,7 @@
         },
          {
             "name":"Du Fu",
-            "image":"assets/images/dufu.jpg",
+            "image":"/assets/images/dufu.jpg",
             "poems":
             [
                 "THE HARD ROAD",

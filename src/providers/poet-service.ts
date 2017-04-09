@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs/Observable';
+import { IPoet } from '../../models/IPoet';
+ 
 const url = "../assets/poets.json"  ;
 /*
   Generated class for the PoetService provider.
@@ -23,6 +25,7 @@ export class PoetService {
     return this.http
     .get(url)
     .map(response=>{
+      console.log(response.text());
       return <IPoet[]>response.json().poets;
     })
     

@@ -18,11 +18,11 @@
 
     <ion-item *ngFor = "let p of poets">
       <ion-thumbnail item-left>
-        <img src="p.image">
+        <img src="{{p.image}}">
       </ion-thumbnail>
       <h2>{{p.name}}</h2>
       <p>{{p.bio}}</p>
-      <button ion-button clear item-right>View</button>
+      <button ion-button clear item-right (click) = "viewPoetDetail($event, p)">View</button>
     </ion-item>
   
 

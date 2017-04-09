@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Badges</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <img src="{{poet.image}}"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        {{poet.name}}
+      </ion-card-title>
+      <p>
+        {{poet.bio}}
+      </p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name='musical-notes' item-left style="color: #d03e84"></ion-icon>
+      Poems
+      <ion-badge item-right>{{poet.poems.length}}</ion-badge>
+    </ion-item>
+ 
+
+  </ion-card>
+
+</ion-content>

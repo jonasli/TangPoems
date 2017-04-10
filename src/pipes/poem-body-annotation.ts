@@ -1,4 +1,4 @@
-import { Injectable, Pipe } from '@angular/core';
+import { Injectable, Pipe, PipeTransform } from '@angular/core';
 import { IAnnotation } from "../models/IPoem";
 
 /*
@@ -11,7 +11,7 @@ import { IAnnotation } from "../models/IPoem";
   name: 'poem-body-annotation'
 })
 @Injectable()
-export class PoemBodyAnnotation {
+export class PoemBodyAnnotation implements PipeTransform {
   /*
     Takes a value and makes it lowercase.
    */

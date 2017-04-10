@@ -46,7 +46,10 @@ import { PoemBodyAnnotation } from "../pipes/poem-body-annotation";
   ],
   providers: [{provide: ErrorHandler,
      useClass: IonicErrorHandler ,
-      }, PoetService,InAppBrowser],
+      }, 
+      PoetService,
+      InAppBrowser,
+      PoemBodyAnnotation],
   
     
 })

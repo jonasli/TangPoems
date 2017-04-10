@@ -41,7 +41,7 @@ export class PoetService {
           .map(response=>{
             console.log(response.text());
             let poems= <IPoem[]>response.json().poems;
-            return poems.filter(item=>item.name=="感遇（其二）");
+            return poems.filter(item=>item.name==name);
           })
       
     }

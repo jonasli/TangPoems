@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { IPoem } from "../../models/IPoem";
 import { PoetService } from "../../providers/poet-service";
-import { PoemDetail } from '../../components/poem-detail'
+import { PoemDetailComponent } from '../../components/poem-detail'
 /*
   Generated class for the PoemDetail page.
 
@@ -17,14 +17,10 @@ export class PoemDetailPage {
   public poem: IPoem;
 
   constructor(public navCtrl: NavController, 
-  public navParams: NavParams,
-  public poetService :PoetService) {
-
-    poetService.getPoems(navParams.get("poem"))
-    .subscribe(
-      data=>{
-        this.poem=data[0];
-    })
+  public navParams: NavParams
+  ) {
+    this.poem = navParams.get("poem");
+    
   }
 
   ionViewDidLoad() {

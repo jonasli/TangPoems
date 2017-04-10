@@ -1,10 +1,12 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>poem.name</ion-title>
-  </ion-navbar>
-</ion-header>
-<!--<ion-list no-lines>
+<p>{{poem.author}} </p>
+<ion-list no-lines>
   <ion-item *ngFor = "let line of poem.body" >
       {{line}}
     </ion-item>
-</ion-list>-->
+</ion-list>
+
+  <ion-tabs class="tabs-basic">
+      <ion-tab tabTitle="Music" [root]="rootPage"></ion-tab>
+      <ion-tab tabTitle="Movies" [root]="rootPage"></ion-tab>
+      <ion-tab tabTitle="Games" [root]="rootPage"></ion-tab>
+    </ion-tabs>

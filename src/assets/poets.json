@@ -7,7 +7,6 @@
             "bio": "https://en.wikipedia.org/wiki/Li_Bai",
             "poems":
             [
-                "THE HARD ROAD",
                 "HARD IS THE WAY OF THE WORLD II",
                 "HARD IS THE WAY OF THE WORLD III"
 
@@ -19,9 +18,20 @@
             "bio": "https://en.wikipedia.org/wiki/Du_Fu",
             "poems":
             [
-                "THE HARD ROAD",
                 "HARD IS THE WAY OF THE WORLD II",
                 "HARD IS THE WAY OF THE WORLD III"
+
+            ]
+        }
+        ,
+         {
+            "name":"Zhang Jiuling",
+            "image":"/assets/images/zhangjiuling.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Zhang_Jiuling",
+            "poems":
+            [
+                "感遇（其一）",
+                "感遇（其二）"
 
             ]
         }

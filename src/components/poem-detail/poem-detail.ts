@@ -19,7 +19,12 @@ export class PoemDetailComponent {
 
   constructor(private iab: InAppBrowser) {
     console.log('Hello PoemDetail Component');
+    console.log(this.poem);
+  }
+
+  ngOnInit() {
     
+    console.log("ngOnInit():"+this.poem); // object here
   }
 
 }

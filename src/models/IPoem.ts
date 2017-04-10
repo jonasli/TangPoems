@@ -6,14 +6,14 @@ export interface IPoem {
  
     annotation:IAnnotation[];
     appreciation:IAppreciation[];
-    
+
 }
 
 export interface IAnnotation{
     line:number;
     word:string;
     details:string;
-
+    source:string;
 
 }
 

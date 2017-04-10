@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { IPoem } from "../../models/IPoem";
 import { InAppBrowser } from "@ionic-native/in-app-browser";
-
+import {PoemBodyAnnotation} from "../../pipes/poem-body-annotation"
 /*
   Generated class for the PoemDetail component.
 
@@ -11,6 +11,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 @Component({
   selector: 'poem-detail',
   templateUrl: 'poem-detail.html'
+ 
 })
 export class PoemDetailComponent {
 

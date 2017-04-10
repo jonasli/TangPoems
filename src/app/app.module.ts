@@ -11,10 +11,12 @@ import {PoetService} from '../providers/poet-service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { PoemDetailComponent } from "../components/poem-detail/poem-detail";
 import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
+import { PoemBodyAnnotation } from "../pipes/poem-body-annotation";
 
 @NgModule({
   declarations: [
     MyApp,
+    PoemBodyAnnotation,
     AuthorListPage,
     PoetDetailPage,
     PoemDetailPage,
@@ -44,6 +46,8 @@ import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
   ],
   providers: [{provide: ErrorHandler,
      useClass: IonicErrorHandler ,
-      }, PoetService,InAppBrowser]
+      }, PoetService,InAppBrowser],
+  
+    
 })
 export class AppModule {}

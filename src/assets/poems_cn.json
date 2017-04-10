@@ -14,10 +14,90 @@
                 ],
             "annotation":[
             {
-                "line": 1,
-                "word": "Tender",
-                "details":"Allured by sweet winds and contented with beauty"
+                "line": 2,
+                "word": "岂",
+                "details":"难道。",
+                "source":""
+            },
+            {
+                "line": 2,
+                "word": "伊",
+                "details":"那里，指江南。",
+                "source":""
+            },
+            {
+                "line": 2,
+                "word": "岂",
+                "details":"难道。",
+                "source":""
+            },
+            {
+                "line": 3,
+                "word": "荐",
+                "details":"进献。",
+                "source":""
+            },
+            {
+                "line": 3,
+                "word": "嘉客",
+                "details":"嘉宾贵客。",
+                "source":""
+            },
+            {
+                "line": 3,
+                "word": "奈何",
+                "details":"无奈。",
+                "source":""
+            },
+            {
+                "line": 3,
+                "word": "阻重深",
+                "details":"山高水深，阻隔重重。",
+                "source":""
+            },
+            {
+                "line": 4,
+                "word": "运命",
+                "details":"命运。",
+                "source":""
+            },
+            {
+                "line": 4,
+                "word": "循环",
+                "details":"周而复始，变化莫测。",
+                "source":""
+            },
+            {
+                "line": 4,
+                "word": "寻",
+                "details":"探求。",
+                "source":""
+            },
+            {
+                "line": 5,
+                "word": "徒言",
+                "details":"只说。",
+                "source":""
+            },
+            {
+                "line": 5,
+                "word": "树",
+                "details":"种植。",
+                "source":""
+            },
+            {
+                "line": 5,
+                "word": "此木",
+                "details":"指丹橘。",
+                "source":""
+            },
+            {
+                "line": 5,
+                "word": "阴",
+                "details":"树阴。",
+                "source":""
             }
+             
             
             ],
 
@@ -45,7 +125,8 @@
             {
                 "line": 1,
                 "word": "Tender",
-                "details":"Allured by sweet winds and contented with beauty"
+                "details":"Allured by sweet winds and contented with beauty",
+                "source":""
             }
             
             ],

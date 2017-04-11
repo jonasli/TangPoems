@@ -23,16 +23,20 @@ export class PoetService {
 
   }
 
-  getPoets(poet:string) : Observable<IPoet[]>{
+  getPoets() : Observable<IPoet[]>{
     return this.http
     .get(poeturl)
     .map(response=>{
       console.log(response.text());
       return <IPoet[]>response.json().poets;
     })
-    
-   
+  }
 
+  getPoet(name:string ) :  Observable<IPoet[]> {
+      return this.getPoets()
+      .map(data=>{
+          return data.filter(data=>{data.name==name}); 
+      } )
   }
 
    getPoems(name:string) : Observable<IPoem[]>{

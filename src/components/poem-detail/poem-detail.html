@@ -1,4 +1,11 @@
-<p>{{poem.author}} </p>
+
+<ion-header >
+  <ion-navbar>
+    <button ion-button clear item-left (click)="viewPoetDetail(poem.author)">{{poem.author}}</button>
+  </ion-navbar>
+</ion-header>
+
+
 <ion-list no-lines>
   <ion-item *ngFor = "let line of poem.body; let i = index" >
      <div   [innerHTML]="line | poembodyannotation:  poem.annotation :  i+1 ">
@@ -6,3 +13,19 @@
     </ion-item>
 </ion-list>
 
+<ion-list no-lines>
+    <ion-list-header>Annotation</ion-list-header>
+    <ion-item *ngFor = "let anno of poem.annotation; let i = index" >
+        {{i+1}}.{{anno.word}}:{{anno.details}}
+
+    </ion-item>
+</ion-list>
+
+<ion-list >
+    <ion-list-header>Appreciation</ion-list-header>
+    <ion-item *ngFor = "let appre of poem.appreciation; let i = index" >
+
+
+        <button ion-button clear item-left (click)="viewAppreciation(appre.source)"> {{appre.details}}</button>
+    </ion-item>
+</ion-list>

@@ -22,7 +22,7 @@ export class AuthorListPage {
   public navParams: NavParams, 
   public poetService :PoetService) {
         this.navController = navCtrl;
-        this.poetService.getPoets("Li Bai")
+        this.poetService.getPoets()
         .subscribe(data => {
           this.poets = data;
         });

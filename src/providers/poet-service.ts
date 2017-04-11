@@ -32,12 +32,10 @@ export class PoetService {
     })
   }
 
-  getPoet(name:string ) :  Observable<IPoet[]> {
+  /*getPoet(name:string ) :  Observable<IPoet[]> {
       return this.getPoets()
-      .map(data=>{
-          return data.filter(data=>{data.name==name}); 
-      } )
-  }
+      .filter((p:IPoet) => p.name ===name);
+  }*/
 
    getPoems(name:string) : Observable<IPoem[]>{
       return this.http

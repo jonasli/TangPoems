@@ -1,5 +1,5 @@
 {
-     "peoms":[
+     "poems":[
         {
             "category":"Five-character-ancient-verse",
             "name": "ORCHID AND ORANGE I",
@@ -11,7 +11,7 @@
                     "Yet why will you think that a forest-hermit，Allured by sweet winds and contented with beauty",
                     "Would no more ask to-be transplanted， Than Would any other natural flower?"
                 ],
-            "Annotation":[
+            "annotation":[
             {
                 "line": 1,
                 "word": "Tender",
@@ -20,7 +20,7 @@
             
             ],
 
-            "Appreciation":[
+            "appreciation":[
                 {
                 "source": "www.baidu.com" ,
                 "author": "Steven J",

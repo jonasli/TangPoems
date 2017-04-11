@@ -4,37 +4,53 @@ import {Http} from '@angular/http';
 
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Page1 } from '../pages/page1/page1';
-import { Page2 } from '../pages/page2/page2';
-import { Page3 } from '../pages/page3/page3';
-import { IconTextPage, TabIconTextContentPage } from '../pages/footerbar/footerbar';
+import { AuthorListPage } from '../pages/author-list/author-list';
+import { PoetDetailPage } from '../pages/poet-detail/poet-detail';
+import {PoetDetailComponent} from '../components/poet-detail/poet-detail';
+import {PoetService} from '../providers/poet-service';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { PoemDetailComponent } from "../components/poem-detail/poem-detail";
+import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
+import { MainPipe} from "../pipes/pipe.module";
 
 @NgModule({
   declarations: [
     MyApp,
-    Page1,
-    Page2,
-    Page3,
-    TabIconTextContentPage,
-    IconTextPage
+    AuthorListPage,
+    PoetDetailPage,
+    PoemDetailPage,
+    PoetDetailComponent,
+    PoemDetailComponent
+    // TabIconTextContentPage,
+    // IconTextPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-     TranslateModule.forRoot({ 
+      IonicModule.forRoot(MyApp),
+      TranslateModule.forRoot({ 
           provide: TranslateLoader,
           useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
           deps: [Http]
-        })
+        }),
+      MainPipe
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    Page1,
-    Page2,
-    Page3,
-    TabIconTextContentPage,
-    IconTextPage
+    AuthorListPage,
+    PoetDetailPage,
+    PoemDetailPage,
+    PoetDetailComponent,
+    PoemDetailComponent
+    // TabIconTextContentPage,
+    // IconTextPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [{provide: ErrorHandler,
+     useClass: IonicErrorHandler ,
+      }, 
+      PoetService,
+      InAppBrowser
+  ],
+  
+    
 })
 export class AppModule {}

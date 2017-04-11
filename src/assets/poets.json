@@ -1,0 +1,39 @@
+{
+
+    "poets":[
+        {
+            "name":"Li Bai",
+            "image":"/assets/images/libai.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Li_Bai",
+            "poems":
+            [
+                "HARD IS THE WAY OF THE WORLD II",
+                "HARD IS THE WAY OF THE WORLD III"
+
+            ]
+        },
+         {
+            "name":"Du Fu",
+            "image":"/assets/images/dufu.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Du_Fu",
+            "poems":
+            [
+                "HARD IS THE WAY OF THE WORLD II",
+                "HARD IS THE WAY OF THE WORLD III"
+
+            ]
+        }
+        ,
+         {
+            "name":"张九龄",
+            "image":"/assets/images/zhangjiuling.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Zhang_Jiuling",
+            "poems":
+            [
+                "感遇（其一）",
+                "感遇（其二）"
+
+            ]
+        }
+    ]
+}

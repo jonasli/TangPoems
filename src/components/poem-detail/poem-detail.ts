@@ -4,7 +4,7 @@ import { InAppBrowser } from "@ionic-native/in-app-browser";
 import { PoemBodyAnnotation } from "../../pipes/poem-body-annotation"
 import { IPoet } from "../../models/IPoet";
 import { PoetDetailPage } from "../../pages/poet-detail/poet-detail";
-import { NavController, LoadingController } from ".2.2.0@ionic-angular";
+import { Events, NavController, NavParams, LoadingController } from "ionic-angular";
 import { PoetService } from "../../providers/poet-service";
 /*
   Generated class for the PoemDetail component.

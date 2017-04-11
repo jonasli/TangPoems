@@ -11,12 +11,11 @@ import {PoetService} from '../providers/poet-service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { PoemDetailComponent } from "../components/poem-detail/poem-detail";
 import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
-import { PoemBodyAnnotation } from "../pipes/poem-body-annotation";
+import { MainPipe} from "../pipes/pipe.module";
 
 @NgModule({
   declarations: [
     MyApp,
-    PoemBodyAnnotation,
     AuthorListPage,
     PoetDetailPage,
     PoemDetailPage,
@@ -26,12 +25,13 @@ import { PoemBodyAnnotation } from "../pipes/poem-body-annotation";
     // IconTextPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp),
-     TranslateModule.forRoot({ 
+      IonicModule.forRoot(MyApp),
+      TranslateModule.forRoot({ 
           provide: TranslateLoader,
           useFactory: (http: Http) => new TranslateStaticLoader(http, '/assets/i18n', '.json'),
           deps: [Http]
-        })
+        }),
+      MainPipe
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,8 +48,8 @@ import { PoemBodyAnnotation } from "../pipes/poem-body-annotation";
      useClass: IonicErrorHandler ,
       }, 
       PoetService,
-      InAppBrowser,
-      PoemBodyAnnotation],
+      InAppBrowser
+  ],
   
     
 })

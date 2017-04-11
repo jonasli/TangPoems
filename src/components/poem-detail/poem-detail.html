@@ -1,7 +1,8 @@
 <p>{{poem.author}} </p>
 <ion-list no-lines>
   <ion-item *ngFor = "let line of poem.body; let i = index" >
-      {{line | PoemBodyAnnotation:poem.annotation:i }}
+     <div   [innerHTML]="line | poembodyannotation:  poem.annotation :  i+1 ">
+     </div>
     </ion-item>
 </ion-list>
 

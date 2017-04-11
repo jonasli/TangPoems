@@ -44,7 +44,7 @@ export class PoetDetailComponent {
   {
     //this.events.publish('poem:view', name);
     this.presentLoadingDefault();
-    this.poetService.getPoems(name)
+    this.poetService.getPoem(name)
     .subscribe(
       data=>{
         console.log(data[0]);

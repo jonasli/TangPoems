@@ -37,13 +37,24 @@ export class PoetService {
       .filter((p:IPoet) => p.name ===name);
   }*/
 
-   getPoems(name:string) : Observable<IPoem[]>{
+   getPoem(name:string) : Observable<IPoem[]>{
       return this.http
           .get(poemurl)
           .map(response=>{
             console.log(response.text());
             let poems= <IPoem[]>response.json().poems;
             return poems.filter(item=>item.name==name);
+          })
+      
+    }
+
+    getPoems() : Observable<IPoem[]>{
+      return this.http
+          .get(poemurl)
+          .map(response=>{
+            console.log(response.text());
+            return  <IPoem[]>response.json().poems;
+ 
           })
       
     }

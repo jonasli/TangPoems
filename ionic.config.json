@@ -1,0 +1,8 @@
+{
+  "name": "tang300",
+  "app_id": "edae0908",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

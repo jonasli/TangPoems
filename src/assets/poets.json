@@ -1,0 +1,41 @@
+{
+
+    "poets":[
+        {
+            "name":"李白",
+            "image":"/assets/images/libai.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Li_Bai",
+            "poems":
+            [
+                "下终南山过斛斯山人宿置酒",
+                "月下独酌",
+                "春思"
+
+            ]
+        },
+         {
+            "name":"杜甫",
+            "image":"/assets/images/dufu.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Du_Fu",
+            "poems":
+            [
+                "望岳" 
+
+            ]
+        }
+        ,
+         {
+            "name":"张九龄",
+            "image":"/assets/images/zhangjiuling.jpg",
+            "bio": "https://en.wikipedia.org/wiki/Zhang_Jiuling",
+            "poems":
+            [
+                "感遇（其一）",
+                "感遇（其三）",
+                "感遇（其四）",
+                "感遇（其七）"
+
+            ]
+        }
+    ]
+}

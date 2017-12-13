@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{poet.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+ 
+    <img src="{{poet.image}}"/>
+
+    <ion-card-content>
+      <ion-card-title >
+       <button ion-button outline (click)="viewBiography(poet.bio)">Biography</button>
+      </ion-card-title>
+     <!-- <p>
+        {{poet.bio}}
+      </p>-->
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name='document' item-left style="color: #d03e84"></ion-icon>
+      Poems
+      <ion-badge item-right>{{poet.poems.length}}</ion-badge>
+    </ion-item>
+ 
+    <ion-list>
+       <ion-list-header>
+        Poems List
+      </ion-list-header>
+      <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
+        
+        {{p}}
+      </button>
+
+
+
+    </ion-list>
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,36 @@
+<!--
+  Generated template for the PoemDetail page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+ <ion-navbar >
+    <ion-title>{{poem.name}}</ion-title>
+ </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <poem-detail [poem] = poem ></poem-detail>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="toolbar">
+   <button ion-button icon-only   (click)="playAudio()"  >
+ 
+  <ion-icon name="skip-backward" class="toolbar"></ion-icon>
+</button>
+   <button ion-button icon-only   (click)="playAudio()"  >
+ 
+  <ion-icon [name]="playornot" class="toolbar"></ion-icon>
+</button>
+   <button ion-button icon-only   (click)="playAudio()"  >
+ 
+  <ion-icon name="skip-forward" class="toolbar"></ion-icon>
+</button>
+  </ion-toolbar>
+</ion-footer>
+

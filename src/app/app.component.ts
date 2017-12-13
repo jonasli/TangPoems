@@ -5,6 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import {TranslateService} from '@ngx-translate/core'; 
+
+ 
+import { AuthorListPage } from '../pages/author-list/author-list';
+import { PoemsListPage } from "../pages/poems-list/poems-list";
+import { SettingsPage } from "../pages/settings/settings";
+import { FavoritePage } from "../pages/favorite/favorite";
 
 @Component({
   templateUrl: 'app.html'
@@ -16,7 +23,7 @@ export class MyApp {
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public translate: TranslateService) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation

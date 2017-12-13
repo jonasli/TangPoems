@@ -2,32 +2,87 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
+
+import {HttpClientModule, HttpClient} from '@angular/common/http';
+import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { AuthorListPage } from '../pages/author-list/author-list';
+import { PoetDetailPage } from '../pages/poet-detail/poet-detail';
+import {PoetDetailComponent} from '../components/poet-detail/poet-detail';
+import {PoetService} from '../providers/poet-service';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { PoemDetailComponent } from "../components/poem-detail/poem-detail";
+import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
+import { MainPipe} from "../pipes/pipe.module";
+//import { NativeAudio } from '@ionic-native/native-audio';
+import { PoemsListComponent } from "../components/poems-list/poems-list";
+import { PoemsListPage } from "../pages/poems-list/poems-list";
+import { Media, MediaObject } from '@ionic-native/media';
+import { SettingsPage } from "../pages/settings/settings";
+import { FavoritePage } from "../pages/favorite/favorite";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, '/assets/i18n', '.json');
+}
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    AuthorListPage,
+    PoetDetailPage,
+    PoemDetailPage,
+    PoemsListPage,
+    PoetDetailComponent,
+    PoemDetailComponent ,
+    PoemsListComponent,
+    SettingsPage,
+    FavoritePage 
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+    }),
+    MainPipe
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    AuthorListPage,
+    PoetDetailPage,
+    PoemDetailPage,
+    PoemsListPage,
+    PoetDetailComponent,
+    PoemDetailComponent ,
+    PoemsListComponent,
+    SettingsPage,
+    FavoritePage 
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    PoetService,
+    InAppBrowser,
+    Media,
+    
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

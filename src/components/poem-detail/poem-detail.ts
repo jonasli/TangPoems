@@ -49,7 +49,7 @@ export class PoemDetailComponent {
     this.poetService.getPoets()
     .subscribe(
       data=>{
-        let poet:IPoet = data.poets.filter(x=>x.name===p)[0];
+        let poet:IPoet = data.filter(x=>x.name===p)[0];
         console.log(poet);
         this.navCtrl.push(PoetDetailPage, {"poet":poet });
         console.log(poet);

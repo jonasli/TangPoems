@@ -29,9 +29,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 
-export function HttpLoaderFactory(http: HttpClient) {
+/* export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n', '.json');
-}
+} */
 
 @NgModule({
   declarations: [
@@ -51,14 +51,14 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule,
-    TranslateModule.forRoot({
+    HttpClientModule
+    /* TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
-      }
-    }),
+      } 
+    })*/,
     MainPipe
   ],
   bootstrap: [IonicApp],

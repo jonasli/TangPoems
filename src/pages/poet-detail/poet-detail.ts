@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { PoetDetail } from '../../components/poet-detail'
+import { PoetDetail } from '../../components/poet-detail/poet-detail';
 import { IPoet } from "../../models/IPoet";
 
 /*

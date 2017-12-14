@@ -19,16 +19,17 @@ import { FavoritePage } from "../pages/favorite/favorite";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  
+  rootPage: any = AuthorListPage;
 
   pages: Array<{title: string, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public translate: TranslateService) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage },
+      { title: 'Home', component: AuthorListPage },
       { title: 'List', component: ListPage }
     ];
 

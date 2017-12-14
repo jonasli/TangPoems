@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { IPoem } from "../../models/IPoem";
 import { PoetService } from "../../providers/poet-service";
-import { PoemDetailComponent } from '../../components/poem-detail'
+import { PoemDetailComponent } from '../../components/poem-detail/poem-detail'
 import { Media, MediaObject } from '@ionic-native/media';
 import {Player} from '../../providers/player'
 /*

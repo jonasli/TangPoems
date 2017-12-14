@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/map';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
 import { IPoet, PoetData } from '../models/IPoet';
 import { IPoem, PoemData } from '../models/IPoem';
 
@@ -24,9 +23,12 @@ export class PoetService {
 
   }
 
-  getPoets() : Observable<PoetData>{
+  getPoets() : Observable<IPoet[]>{
     return this.http
-    .get<PoetData>(poeturl);
+    .get (poeturl)
+    .map(response=>{
+        return response['poets'];
+    });
      
   }
 
@@ -35,22 +37,23 @@ export class PoetService {
       .filter((p:IPoet) => p.name ===name);
   }*/
 
-   getPoem(name:string) : Observable<PoemData>{
+   getPoem(name:string) : Observable<IPoem[]>{
       return this.http
-          .get<PoemData>(poemurl)
+          .get(poemurl)
           .map(response=>{
-            
-            let ps= <IPoem[]>response.poems;
-            
-            response.poems=ps.filter(item=>item.name==name);
-            return response;
+          
+             return response['poems'].filter(item=>item.name==name);
+             
           })
       
     }
 
-    getPoems() : Observable<PoemData>{
+    getPoems() : Observable<IPoem[]>{
       return this.http
-          .get<PoemData>(poemurl);
+          .get (poemurl)
+          .map(response=>{
+            return response['poems'];
+        });;
           
     }
 

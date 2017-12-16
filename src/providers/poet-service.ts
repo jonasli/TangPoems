@@ -57,4 +57,13 @@ export class PoetService {
           
     }
 
+    getPoemsByPoet(poet: IPoet) : Observable<IPoem[]>{
+      return this.http
+          .get (poemurl)
+          .map(response=>{
+            return response['poems'].filter(item=>item.author==poet.name);
+        });
+          
+    }
+
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-
+// import { AudioProvider } from 'ionic-audio';
 /*
   Generated class for the Player provider.
 
@@ -15,7 +15,9 @@ export class Player {
 	stream:any;
 	promise:any;
 
-	constructor(location) {
+	constructor(location
+		// , private audioProvider: AudioProvider
+	) {
     this.url = location;
 		this.stream = new Audio(this.url);
 	};

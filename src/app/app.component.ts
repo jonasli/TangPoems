@@ -19,7 +19,7 @@ import { FavoritePage } from "../pages/favorite/favorite";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  
+
   rootPage: any = AuthorListPage;
 
   pages: Array<{title: string, component: any}>;
@@ -29,8 +29,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: AuthorListPage },
-      { title: 'List', component: ListPage }
+      { title: '作者查询', component: AuthorListPage },
+      { title: '诗词查询', component: PoemsListPage }
     ];
 
   }

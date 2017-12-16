@@ -7,16 +7,22 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>Poets List</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>诗人列表</ion-title>
+
+    
   </ion-navbar>
 </ion-header>
 
 <ion-content class="list-avatar-page">
+    <ion-searchbar (ionInput)="getItems($event)"  ></ion-searchbar>
   <ion-list>
 
-    <ion-list-header>Poet List</ion-list-header>
+    <ion-list-header></ion-list-header>
 
-    <ion-item *ngFor = "let p of poets">
+    <ion-item *ngFor = "let p of matchedpoets">
       <ion-thumbnail item-left>
         <img src="{{p.image}}">
       </ion-thumbnail>

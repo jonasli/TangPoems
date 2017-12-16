@@ -27,13 +27,25 @@
  
     <ion-list>
        <ion-list-header>
-        Poems List
+
       </ion-list-header>
-      <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
+<!--       <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
         
         {{p}}
-      </button>
-
+      </button> -->
+      
+      <audio-track #audio *ngFor="let track of tracks"  [track]="track" >
+          <ion-item>  
+            <ion-thumbnail item-left>
+              <!-- <img src="{{this.poet.image}}"> -->
+              <audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
+            </ion-thumbnail>
+            <div item-content style="width:100%">
+              <p><strong>{{track.title}}</strong> ⚬ <em>{{track.artist}}</em></p>
+              <audio-track-progress-bar dark duration progress [audioTrack]="audio" [ngStyle]="{visibility: audio.completed > 0 ? 'visible' : 'hidden'}"></audio-track-progress-bar>
+            </div>
+          </ion-item>    
+        </audio-track>
 
 
     </ion-list>

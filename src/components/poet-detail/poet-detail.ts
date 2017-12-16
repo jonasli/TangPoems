@@ -4,6 +4,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Events, NavController, NavParams, LoadingController } from "ionic-angular";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
 import { PoetService } from "../../providers/poet-service";
+import { AudioProvider,ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
+
 /*
   Generated class for the PoetDetail component.
 
@@ -18,21 +20,31 @@ export class PoetDetailComponent {
     navController: any;
 
   @Input() poet: IPoet  ;
+  @Input() tracks: ITrackConstraint[]  ;
+
+
   browser:any;
   loading :any;
+  
   
   constructor(private iab: InAppBrowser,
     public events: Events,
     public navCtrl: NavController,
     public navParams: NavParams,
     public poetService :PoetService,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    private _audioProvider: AudioProvider
   
   ) {
-    console.log('Hello PoetDetail Component');
+    
     
   }
 
+  ngOnInit(){
+    //called after the constructor and called  after the first ngOnChanges() 
+    console.log(this.poet.name);
+    console.log(this.tracks.length);
+  }
   
   viewBiography(url:string )
   {

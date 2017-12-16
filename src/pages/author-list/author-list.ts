@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import {PoetService} from "../../providers/poet-service";
 import { PoetDetailPage } from "../poet-detail/poet-detail"
 import { IPoet } from "../../models/IPoet";
+import { IPoem } from "../../models/IPoem";
+import { CordovaAudioTrack, ITrackConstraint } from '.3.2.0@ionic-audio';
 /*
   Generated class for the AuthorList page.
 
@@ -17,6 +19,7 @@ export class AuthorListPage {
     navController: any;
 
   public poets : any = [];
+  matchedpoets:IPoet[];
   
   constructor(public navCtrl: NavController, 
   public navParams: NavParams, 
@@ -25,6 +28,7 @@ export class AuthorListPage {
         this.poetService.getPoets()
         .subscribe(data => {
           this.poets = data;
+          this.matchedpoets=data;
         });
 
   }
@@ -36,8 +40,53 @@ export class AuthorListPage {
 
   }
 
+
+  getItems(ev) {
+    
+   
+       // set val to the value of the ev target
+       var val = ev.target.value;
+   
+       // if the value is an empty string don't filter the items
+       if (val && val.trim() != '') {
+         this.matchedpoets = this.poets.filter((item) => {
+           return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
+         })
+       }
+       else{
+           this.matchedpoets =this.poets;
+       
+       }
+     }
+
   viewPoetDetail (event, p:IPoet) {
-		this.navController.push(PoetDetailPage, {"poet":p });
+
+      this.poetService.getPoemsByPoet(p).subscribe(data => {
+      
+        var myTracks: ITrackConstraint[]= [];
+        //var i=0;
+
+        for( let  poem of data)
+        {
+
+          myTracks.push({
+            src: "/assets/audio/("+poem.author+")"+ poem.name + ".mp3",
+            artist: poem.author,
+            title: poem.name,
+            art: p.image,
+            preload: 'metadata',
+            //id: i
+
+          } );
+      
+        }
+         
+
+
+         this.navController.push(PoetDetailPage, {"poet":p, "tracks" :myTracks });
+       });
+    
+       
   }
 
 }

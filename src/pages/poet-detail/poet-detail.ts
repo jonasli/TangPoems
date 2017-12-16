@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { PoetDetail } from '../../components/poet-detail/poet-detail';
 import { IPoet } from "../../models/IPoet";
+import { IPoem } from "../../models/IPoem";
+import { PoetService } from '../../providers/poet-service';
+import { ITrackConstraint, CordovaAudioTrack } from '.3.2.0@ionic-audio';
 
 /*
   Generated class for the PoetDetail page.
@@ -15,9 +18,15 @@ import { IPoet } from "../../models/IPoet";
 })
 export class PoetDetailPage {
   public poet: IPoet;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public tracks: ITrackConstraint[];
+  //public poems :IPoem[];
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    public poetService: PoetService
+  ) {
       this.poet=navParams.get("poet");
-
+      this.tracks=navParams.get("tracks");
+     
   }
 
   ionViewDidLoad() {

@@ -28,6 +28,15 @@ import { FavoritePage } from "../pages/favorite/favorite";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
+
+/**
+ * Sample custom factory function to use with ionic-audio
+ */
+export function myCustomAudioProviderFactory() {
+  return (window.hasOwnProperty('cordova')) ? new CordovaMediaProvider() : new WebAudioProvider();
+}
+
 
 /* export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n', '.json');
@@ -50,6 +59,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ],
   imports: [
     BrowserModule,
+    IonicAudioModule.forRoot(myCustomAudioProviderFactory),
     IonicModule.forRoot(MyApp),
     HttpClientModule
     /* TranslateModule.forRoot({
@@ -81,8 +91,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     PoetService,
     InAppBrowser,
-    Media,
-    
+    Media ,
+    //AudioProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

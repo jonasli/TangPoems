@@ -1,10 +1,8 @@
-  <ion-header>
-  <ion-navbar>
-    
-  </ion-navbar>
-</ion-header>
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
   
-<ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+
  <ion-list>
      
       <button ion-item *ngFor = "let p of matchedpoems" (click)="viewPoem(p.name)">

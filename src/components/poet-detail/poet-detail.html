@@ -8,11 +8,11 @@
 
   <ion-card>
  
-    <img src="{{poet.image}}"/>
+    <img class="circle-pic" src="{{poet.image}}"/>
 
     <ion-card-content>
       <ion-card-title >
-       <button ion-button outline (click)="viewBiography(poet.bio)">Biography</button>
+       <button ion-button outline (click)="viewBiography(poet.bio)">更多生平</button>
       </ion-card-title>
      <!-- <p>
         {{poet.bio}}
@@ -21,14 +21,12 @@
 
     <ion-item>
       <ion-icon name='document' item-left style="color: #d03e84"></ion-icon>
-      Poems
+      诗歌总数
       <ion-badge item-right>{{poet.poems.length}}</ion-badge>
     </ion-item>
  
-    <ion-list>
-       <ion-list-header>
-
-      </ion-list-header>
+    <ion-item-group>
+        <ion-item-divider color="light">律诗</ion-item-divider>
 <!--       <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
         
         {{p}}
@@ -37,18 +35,21 @@
       <audio-track #audio *ngFor="let track of tracks"  [track]="track" >
           <ion-item>  
             <ion-thumbnail item-left>
-              <!-- <img src="{{this.poet.image}}"> -->
+                <ion-avatar >
+                  <!-- <ion-icon name="play"></ion-icon> -->
+                  <img class="circle-pic" src="{{poet.image}}">
+                </ion-avatar>
               <audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
             </ion-thumbnail>
-            <div item-content style="width:100%">
-              <p><strong>{{track.title}}</strong> ⚬ <em>{{track.artist}}</em></p>
+            <div item-content style="width:100%" >
+              <h2  (click)="viewPoem(track.title)" >{{track.title}} </h2> 
               <audio-track-progress-bar dark duration progress [audioTrack]="audio" [ngStyle]="{visibility: audio.completed > 0 ? 'visible' : 'hidden'}"></audio-track-progress-bar>
             </div>
           </ion-item>    
         </audio-track>
 
 
-    </ion-list>
+      </ion-item-group>
 
   </ion-card>
 

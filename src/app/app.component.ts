@@ -22,15 +22,15 @@ export class MyApp {
 
   rootPage: any = AuthorListPage;
 
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string,color :string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen ) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: '作者查询', component: AuthorListPage },
-      { title: '诗词查询', component: PoemsListPage }
+      { title: '作者查询', component: AuthorListPage, icon: 'search', color: 'faOrange' },
+      { title: '诗词查询', component: PoemsListPage , icon: 'search', color: 'faOrange' }
     ];
 
   }

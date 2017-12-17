@@ -18,3 +18,20 @@
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+
+<ion-footer>
+  <ion-toolbar class="toolbar">
+   <button ion-button icon-only   (click)="playAudio()"  >
+ 
+  <ion-icon name="skip-backward" class="toolbar"></ion-icon>
+</button>
+   <button ion-button icon-only   (click)="playAudio()"  >
+ 
+  <ion-icon [name]="playornot" class="toolbar"></ion-icon>
+</button>
+   <button ion-button icon-only   (click)="playAudio()"  >
+ 
+  <ion-icon name="skip-forward" class="toolbar"></ion-icon>
+</button>
+  </ion-toolbar>
+</ion-footer>

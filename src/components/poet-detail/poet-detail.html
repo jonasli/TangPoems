@@ -19,24 +19,30 @@
       </p>-->
     </ion-card-content>
 
-    <ion-item>
+<!--     <ion-item>
       <ion-icon name='document' item-left style="color: #d03e84"></ion-icon>
       诗歌总数
       <ion-badge item-right>{{poet.poems.length}}</ion-badge>
-    </ion-item>
- 
-    <ion-item-group>
-        <ion-item-divider color="light">律诗</ion-item-divider>
+    </ion-item> -->
+
+
+    <ion-list *ngFor = "let key of  getKeys(poems) " >
+        <ion-list-header>{{key}}</ion-list-header>
+        <ion-item-group >
+          <ion-item *ngFor="let item of poems[key]">{{ item.name }}</ion-item>
+        </ion-item-group>
+      </ion-list>
+  
 <!--       <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
         
         {{p}}
       </button> -->
       
-      <audio-track #audio *ngFor="let track of tracks"  [track]="track" >
+     <!--  <audio-track #audio *ngFor="let track of tracks"  [track]="track" >
           <ion-item>  
             <ion-thumbnail item-left>
                 <ion-avatar >
-                  <!-- <ion-icon name="play"></ion-icon> -->
+              <ion-icon name="play"></ion-icon> 
                   <img class="circle-pic" src="{{poet.image}}">
                 </ion-avatar>
               <audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
@@ -49,7 +55,7 @@
         </audio-track>
 
 
-      </ion-item-group>
+      </ion-item-group> -->
 
   </ion-card>
 

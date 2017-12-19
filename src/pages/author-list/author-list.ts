@@ -61,30 +61,11 @@ export class AuthorListPage {
 
   viewPoetDetail (event, p:IPoet) {
 
-      this.poetService.getPoemsByPoet(p).subscribe(data => {
       
-        var myTracks: ITrackConstraint[]= [];
-        //var i=0;
-
-        for( let  poem of data)
-        {
-
-          myTracks.push({
-            src: "/assets/audio/("+poem.author+")"+ poem.name + ".mp3",
-            artist: poem.author,
-            title: poem.name,
-            art: p.image,
-            preload: 'metadata',
-            //id: i
-
-          } );
-      
-        }
-         
 
 
-         this.navController.push(PoetDetailPage, {"poet":p, "tracks" :myTracks });
-       });
+         this.navController.push(PoetDetailPage, {"poet":p });
+
     
        
   }

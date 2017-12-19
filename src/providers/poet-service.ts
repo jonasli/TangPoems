@@ -61,7 +61,9 @@ export class PoetService {
       return this.http
           .get (poemurl)
           .map(response=>{
-            return response['poems'].filter(item=>item.author==poet.name);
+            return response['poems']
+                .filter(item=>item.author==poet.name)
+                ;
         });
           
     }

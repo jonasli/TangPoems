@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, keyframes } from '@angular/core';
 import { IPoet } from '../../models/IPoet';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Events, NavController, NavParams, LoadingController } from "ionic-angular";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
 import { PoetService } from "../../providers/poet-service";
 import { AudioProvider,ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
+import { IPoem } from '../../models/IPoem';
 
 /*
   Generated class for the PoetDetail component.
@@ -20,8 +21,8 @@ export class PoetDetailComponent {
     navController: any;
 
   @Input() poet: IPoet  ;
-  @Input() tracks: ITrackConstraint[]  ;
-
+  tracks: ITrackConstraint[]  ;
+  poems: {[key :string] : IPoem[]};
 
   browser:any;
   loading :any;
@@ -36,14 +37,44 @@ export class PoetDetailComponent {
     private _audioProvider: AudioProvider
   
   ) {
-    
+
     
   }
 
   ngOnInit(){
     //called after the constructor and called  after the first ngOnChanges() 
     console.log(this.poet.name);
-    console.log(this.tracks.length);
+    this.poems={};
+    this.tracks =  [];
+    this.poetService.getPoemsByPoet(this.poet).subscribe(data => {
+      
+         
+        //var i=0;
+
+        for( let  poem of data)
+        {
+
+          if(this.poems[poem.category]==null)
+            this.poems[poem.category]=[];
+
+          this.poems[poem.category].push(poem);
+
+          this.tracks.push({
+            src: "/assets/audio/("+poem.author+")"+ poem.name + ".mp3",
+            artist: poem.author,
+            title: poem.name,
+            art: this.poet.image,
+            preload: 'metadata',
+            //id: i
+
+          } );
+      
+        }
+
+        
+    });  
+      
+    //console.log(this.tracks.length);
   }
   
   viewBiography(url:string )
@@ -79,4 +110,8 @@ export class PoetDetailComponent {
 
    
   }
+
+  getKeys(item) {
+    return Object.keys(item);
+   }
 }

@@ -4,7 +4,7 @@ import { IPoem } from "../../models/IPoem";
 import { PoetService } from "../../providers/poet-service";
 import { PoemDetailComponent } from '../../components/poem-detail/poem-detail'
 import { Media, MediaObject } from '@ionic-native/media';
-import {Player} from '../../providers/player'
+import {AudioPlayer} from '../../providers/audio-player'
 import { IonicAudioModule } from '.3.2.0@ionic-audio';
 /*
   Generated class for the PoemDetail page.
@@ -18,23 +18,23 @@ import { IonicAudioModule } from '.3.2.0@ionic-audio';
 })
 export class PoemDetailPage {
   public poem: IPoem;
-  player:Player;
+  player:AudioPlayer;
   playornot:string="play";
   constructor(public navCtrl: NavController, 
   public navParams: NavParams,
   private media: Media
   ) {
     this.poem = navParams.get("poem");
-    var url="/assets/audio/("+this.poem.author+")"+ this.poem.name + ".mp3";
-    console.debug(url);
-    this.player=new Player(url);
+    //var url="/assets/audio/("+this.poem.author+")"+ this.poem.name + ".mp3";
+    //console.debug(url);
+    //this.player=new Player(url);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PoemDetailPage');
   }
 
-  playAudio(){
+  //playAudio(){
       // Play the audio file at url
       
 /*      const onStatusUpdate = (status) => console.log(status);
@@ -45,7 +45,7 @@ export class PoemDetailPage {
           file.play();
 
       })*/
-      if(this.playornot=="play")
+     /*  if(this.playornot=="play")
       {
       
         this.player.play().then(() => {
@@ -56,13 +56,13 @@ export class PoemDetailPage {
       else{
         this.pauseAudio();
 
-      }
+      } */
 
-  }
-
+  //}
+/* 
   pauseAudio(){
       this.player.pause();
       this.playornot="play";
-  }
+  } */
 
 }

@@ -6,6 +6,7 @@ import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
 import { PoetService } from "../../providers/poet-service";
 import { AudioProvider,ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
 import { IPoem } from '../../models/IPoem';
+import {AudioPlayer} from '../../providers/audio-player'
 
 /*
   Generated class for the PoetDetail component.
@@ -23,7 +24,7 @@ export class PoetDetailComponent {
   @Input() poet: IPoet  ;
   tracks: ITrackConstraint[]  ;
   poems: {[key :string] : IPoem[]};
-
+  _audioPlayer : AudioPlayer;
   browser:any;
   loading :any;
   
@@ -34,10 +35,10 @@ export class PoetDetailComponent {
     public navParams: NavParams,
     public poetService :PoetService,
     public loadingCtrl: LoadingController,
-    private _audioProvider: AudioProvider
-  
+    private _audioProvider: AudioProvider,
+    public audioPlayer:AudioPlayer
   ) {
-
+    this._audioPlayer= audioPlayer;
     
   }
 
@@ -83,22 +84,27 @@ export class PoetDetailComponent {
  
   }
 
-  viewPoem(name:string)
+  addToPlayList(p)
+  {
+      this.audioPlayer.add(this.tracks.filter(item=>item.title==p.name)[0]);
+  }
+
+  viewPoem(p)
   {
     //this.events.publish('poem:view', name);
-    this.presentLoadingDefault();
-    this.poetService.getPoem(name)
+    //this.presentLoadingDefault();
+/*     this.poetService.getPoem(name)
     .subscribe(
       data=>{
-        console.log(data[0]);
-        this.navCtrl.push(PoemDetailPage, {"poem":data[0] });
-        console.log(data[0]);
-        if(this.loading!=null)
-        {
-            this.loading.dismiss();
-            this.loading=null;
-        }
-      })
+        console.log(data[0]); */
+        this.navCtrl.push(PoemDetailPage, {"poem":p});
+       // console.log(data[0]);
+        //if(this.loading!=null)
+        //{
+        //    this.loading.dismiss();
+       //     this.loading=null;
+       // }
+      //})
   }
 
   presentLoadingDefault() {

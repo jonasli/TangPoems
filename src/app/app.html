@@ -20,18 +20,22 @@
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 
 <ion-footer>
-  <ion-toolbar class="toolbar">
-   <button ion-button icon-only   (click)="playAudio()"  >
- 
-  <ion-icon name="skip-backward" class="toolbar"></ion-icon>
-</button>
-   <button ion-button icon-only   (click)="playAudio()"  >
- 
-  <ion-icon [name]="playornot" class="toolbar"></ion-icon>
-</button>
-   <button ion-button icon-only   (click)="playAudio()"  >
- 
-  <ion-icon name="skip-forward" class="toolbar"></ion-icon>
-</button>
+  <ion-toolbar class="toolbar" >
+    
+    <audio-track #audio [track]="_audioPlayer.current" *ngIf="_audioPlayer.current">
+        <ion-item>  
+          <ion-thumbnail item-left>
+              <ion-avatar >
+            <ion-icon name="play"></ion-icon> 
+                <img class="circle-pic" src="{{audioPlayer.current.art}}">
+              </ion-avatar>
+            <audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
+          </ion-thumbnail>
+          <div item-content style="width:100%" >
+            <h2  (click)="viewPoem(_audioPlayer.current.title)" >{{_audioPlayer.current.title}} </h2> 
+            <audio-track-progress-bar dark duration progress [audioTrack]="audio" [ngStyle]="{visibility: audio.completed > 0 ? 'visible' : 'hidden'}"></audio-track-progress-bar>
+          </div>
+        </ion-item>    
+      </audio-track>
   </ion-toolbar>
 </ion-footer>

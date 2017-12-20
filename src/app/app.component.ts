@@ -13,20 +13,26 @@ import { PoemsListPage } from "../pages/poems-list/poems-list";
 import { SettingsPage } from "../pages/settings/settings";
 import { FavoritePage } from "../pages/favorite/favorite";
 
+import { AudioPlayer } from "../providers/audio-player";
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-
+  _audioPlayer:AudioPlayer;
   rootPage: any = AuthorListPage;
 
   pages: Array<{title: string, component: any, icon: string,color :string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen ) {
+  constructor(public platform: Platform, 
+    public statusBar: StatusBar, 
+    public splashScreen: SplashScreen,
+    public audioPlayer: AudioPlayer
+   ) {
     this.initializeApp();
-
+    this._audioPlayer = audioPlayer;
     // used for an example of ngFor and navigation
     this.pages = [
       { title: '作者查询', component: AuthorListPage, icon: 'search', color: 'faOrange' },

@@ -28,6 +28,8 @@ import { FavoritePage } from "../pages/favorite/favorite";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import {AudioPlayer} from '../providers/audio-player';
+
 import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
 
 /**
@@ -61,14 +63,15 @@ export function myCustomAudioProviderFactory() {
     BrowserModule,
     IonicAudioModule.forRoot(myCustomAudioProviderFactory),
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+  
     /* TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
           deps: [HttpClient]
       } 
-    })*/,
+    })*/
     MainPipe
   ],
   bootstrap: [IonicApp],
@@ -92,6 +95,7 @@ export function myCustomAudioProviderFactory() {
     PoetService,
     InAppBrowser,
     Media ,
+    AudioPlayer,
     //AudioProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -49,6 +49,16 @@ export class AudioPlayer {
 		return this.promise; */
 	};
 
+	addPlay(track:ITrackConstraint)
+	{
+		if(this.playlist.length==0)
+			this.play(track);
+		else
+		{
+			this.playlist.push(track);
+			this.play(track);
+		}
+	}
 
 	add(track:ITrackConstraint)
 	{

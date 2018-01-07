@@ -3,6 +3,7 @@ import { IPoem } from "../../models/IPoem";
 import { LoadingController, NavController, NavParams } from "ionic-angular";
 import { PoetService } from "../../providers/poet-service";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
+import { AudioPlayer } from '../../providers/audio-player';
 
 /*
   Generated class for the PoemsList component.
@@ -19,13 +20,16 @@ export class PoemsListComponent {
 
   poems:IPoem[];
   matchedpoems:IPoem[];
+  _audioPlayer : AudioPlayer;
 
   constructor( public poetService :PoetService,
     public loadingCtrl: LoadingController,
     public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams,
+    public audioPlayer: AudioPlayer
+  ) {
     console.log('Hello PoemsList Component');
-
+    this._audioPlayer=audioPlayer;
 
     poetService.getPoems().subscribe(
       data=>{
@@ -62,13 +66,27 @@ export class PoemsListComponent {
       data=>{
         console.log(data[0]);
         this.navCtrl.push(PoemDetailPage, {"poem":data[0] });
+ 
+        var poet = this.poetService.getPoet(data[0].author);
+
+        this._audioPlayer.current={
+          src: "/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
+          artist: data[0].author,
+          title: data[0].name,
+          art: poet.image,
+          preload: 'metadata',
+          //id: i
+
+        } ;
         console.log(data[0]);
         if(this.loading!=null)
         {
             this.loading.dismiss();
             this.loading=null;
         }
-      })
+      }
+    )
+ 
   }
 
    presentLoadingDefault() {

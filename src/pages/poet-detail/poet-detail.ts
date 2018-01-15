@@ -4,7 +4,7 @@ import { PoetDetailComponent } from '../../components/poet-detail/poet-detail';
 import { IPoet } from "../../models/IPoet";
 import { IPoem } from "../../models/IPoem";
 import { PoetService } from '../../providers/poet-service';
-import { ITrackConstraint, CordovaAudioTrack } from '.3.2.0@ionic-audio';
+import { ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
 
 /*
   Generated class for the PoetDetail page.

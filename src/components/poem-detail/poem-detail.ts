@@ -46,10 +46,8 @@ export class PoemDetailComponent {
   viewPoetDetail (p:string) {
 
     this.presentLoadingDefault();
-    this.poetService.getPoets()
-    .subscribe(
-      data=>{
-        let poet:IPoet = data.filter(x=>x.name===p)[0];
+ 
+        let poet:IPoet = this.poetService.getPoet(p);
         console.log(poet);
         this.navCtrl.push(PoetDetailPage, {"poet":poet });
         console.log(poet);
@@ -58,7 +56,7 @@ export class PoemDetailComponent {
             this.loading.dismiss();
             this.loading=null;
         }
-      })
+ 
 
   }
 

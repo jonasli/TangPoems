@@ -4,7 +4,7 @@ import {PoetService} from "../../providers/poet-service";
 import { PoetDetailPage } from "../poet-detail/poet-detail"
 import { IPoet } from "../../models/IPoet";
 import { IPoem } from "../../models/IPoem";
-import { CordovaAudioTrack, ITrackConstraint } from '.3.2.0@ionic-audio';
+import { CordovaAudioTrack, ITrackConstraint } from 'ionic-audio';
 /*
   Generated class for the AuthorList page.
 
@@ -25,12 +25,9 @@ export class AuthorListPage {
   public navParams: NavParams, 
   public poetService :PoetService) {
         this.navController = navCtrl;
-        this.poetService.getPoets()
-        .subscribe(data => {
-          this.poets = data;
-          this.matchedpoets=data;
-        });
-
+         
+          this.poets = this.poetService.getPoets();
+          this.matchedpoets=Object.assign([],this.poets);
   }
 
   ionViewDidLoad() {

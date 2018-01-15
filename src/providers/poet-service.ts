@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { IPoet, PoetData } from '../models/IPoet';
-import { IPoem, PoemData } from '../models/IPoem';
+import { IPoet } from '../models/IPoet';
+import { IPoem } from '../models/IPoem';
 
 
 const poeturl = "../assets/poets.json"  ;
@@ -22,19 +22,15 @@ export class PoetService {
   constructor(public http: HttpClient) {
     console.log('Hello PoetService Provider');
     this.poets=[];
+    this.getPoems().subscribe(data=>{});
 
   }
 
  
 
-  getPoets() : Observable<IPoet[]>{       
-    return this.http
-    .get (poeturl)
-    .map(response=>{
-
-
-        return response['poets'];
-    });
+  getPoets() : IPoet[]{       
+     
+    return this.poets;
      
   }
 

@@ -5,7 +5,7 @@ import { PoetService } from "../../providers/poet-service";
 import { PoemDetailComponent } from '../../components/poem-detail/poem-detail'
 import { Media, MediaObject } from '@ionic-native/media';
 import {AudioPlayer} from '../../providers/audio-player'
-import { IonicAudioModule } from '.3.2.0@ionic-audio';
+import { IonicAudioModule } from 'ionic-audio';
 /*
   Generated class for the PoemDetail page.
 

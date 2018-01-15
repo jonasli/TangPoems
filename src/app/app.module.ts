@@ -29,7 +29,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {AudioPlayer} from '../providers/audio-player';
-import { CacheModule } from 'ionic-cache';
+import { CacheModule,CacheService } from 'ionic-cache';
 import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
 
 /**
@@ -97,6 +97,7 @@ export function myCustomAudioProviderFactory() {
     InAppBrowser,
     Media ,
     AudioPlayer,
+    CacheService,
     //AudioProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IPoem } from "../../models/IPoem";
 import { LoadingController, NavController, NavParams } from "ionic-angular";
 import { PoetService } from "../../providers/poet-service";
@@ -15,12 +15,13 @@ import { AudioPlayer } from '../../providers/audio-player';
   selector: 'poems-list',
   templateUrl: 'poems-list.html'
 })
-export class PoemsListComponent {
+export class PoemsListComponent implements OnInit {
     loading: any;
 
   poems:IPoem[];
   matchedpoems:IPoem[];
   _audioPlayer : AudioPlayer;
+  _poetService :PoetService;
 
   constructor( public poetService :PoetService,
     public loadingCtrl: LoadingController,
@@ -30,13 +31,19 @@ export class PoemsListComponent {
   ) {
     console.log('Hello PoemsList Component');
     this._audioPlayer=audioPlayer;
+    this._poetService=poetService;
+    
+    
+  }
 
-    poetService.getPoems().subscribe(
+  ngOnInit(){
+    //called after the constructor and called  after the first ngOnChanges()
+
+    this._poetService.getPoems().subscribe(
       data=>{
           this.poems=data;
           this.matchedpoems=data;
       })
-    
   }
 
   getItems(ev) {

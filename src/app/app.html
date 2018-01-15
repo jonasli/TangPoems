@@ -22,13 +22,13 @@
 <ion-footer>
   <ion-toolbar >
    <ion-row  >
-      <ion-col col-9 >
+      <ion-col col-11 >
         <audio-track #audio [track]="_audioPlayer.current" *ngIf="_audioPlayer.current">
             <ion-item>  
               <ion-thumbnail item-left>
                   <ion-avatar class="item-avatar" >
               
-                    <img src="{{audioPlayer.current.art}}">
+                    <img src="{{audioPlayer.current.art}}" class="circle-pic" >
                   </ion-avatar>
                 <audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
               </ion-thumbnail>
@@ -43,8 +43,11 @@
 
 
       </ion-col>
-      <ion-col col-3 style="font-size:30px;" >
-          <ion-icon name="list" ></ion-icon>
+      <ion-col col-1 style="font-size:30px;" >
+          
+          <button  (click)="presentActionSheet()">
+            <ion-icon name="list" style="font-size: 30px !important;"  ></ion-icon>
+          </button>
       </ion-col>
    </ion-row>
   </ion-toolbar>

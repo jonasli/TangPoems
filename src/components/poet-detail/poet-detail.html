@@ -29,9 +29,9 @@
   <ion-list-header>{{key}}</ion-list-header>
   <ion-item-group>
     <ion-item *ngFor="let item of poems[key]"  >
-      <ion-thumbnail item-left>
+  <!--     <ion-thumbnail item-left>
         <ion-icon name="add" (click)="addToPlayList(item)"></ion-icon>
-      </ion-thumbnail>
+      </ion-thumbnail> -->
       <div item-content style="width:80%"  (click)="viewPoem(item)">
         {{ item.name }}
       </div>

@@ -16,7 +16,7 @@ import { FavoritePage } from "../pages/favorite/favorite";
 import { AudioPlayer } from "../providers/audio-player";
 import {PoemDetailPage } from "../pages/poem-detail/poem-detail";
 import { PoetService } from '../providers/poet-service';
-
+import { CacheModule, CacheService } from 'ionic-cache';
 @Component({
   templateUrl: 'app.html'
 })
@@ -33,8 +33,22 @@ export class MyApp {
     public splashScreen: SplashScreen,
     public audioPlayer: AudioPlayer ,
     public poetService :PoetService,
+    public cache: CacheService
    ) {
-    this.initializeApp();
+     
+    this.platform.ready().then(() => {
+      // Set TTL to 12h
+      cache.setDefaultTTL(60 * 60 * 12);
+      
+      // Keep our cached results when device is offline!
+      cache.setOfflineInvalidate(false);
+
+      // Okay, so the platform is ready and our plugins are available.
+      // Here you can do any higher level native things you might need.
+      this.statusBar.styleDefault();
+      this.splashScreen.hide();
+    });
+
     this._audioPlayer = audioPlayer;
     // used for an example of ngFor and navigation
     this.pages = [
@@ -45,12 +59,7 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
-    });
+   
   }
 
   openPage(page) {

@@ -3,6 +3,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { IPoet } from '../models/IPoet';
 import { IPoem } from '../models/IPoem';
+import { CacheService } from 'ionic-cache';
 
 
 const poeturl = "../assets/poets.json"  ;
@@ -18,28 +19,29 @@ export class PoetService {
   
     private poems :IPoem[];
     private poets: IPoet[];
+    private _cache:CacheService;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient,
+    public cache:CacheService        
+) {
     console.log('Hello PoetService Provider');
     this.poets=[];
     this.getPoems().subscribe(data=>{});
-
   }
 
  
 
-  getPoets() : IPoet[]{       
-     
-    return this.poets;
-     
-  }
+    getPoets() :  IPoet[] {       
+        return this.poets;
+        
+    }
 
 
 
-  getPoet(name:string ) :  IPoet {
-      return this.poets
-      .filter((p:IPoet) => p.name ===name)[0];
-  }
+    getPoet(name:string ) :  IPoet {
+        return this.poets
+        .filter((p:IPoet) => p.name ===name)[0];
+    }
 
    getPoem(name:string) : Observable<IPoem[]>{
       return this.http

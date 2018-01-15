@@ -25,9 +25,11 @@ export class AuthorListPage {
   public navParams: NavParams, 
   public poetService :PoetService) {
         this.navController = navCtrl;
-         
+        
           this.poets = this.poetService.getPoets();
-          this.matchedpoets=Object.assign([],this.poets);
+          this.matchedpoets=this.poets;
+ 
+
   }
 
   ionViewDidLoad() {

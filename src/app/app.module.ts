@@ -29,7 +29,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {AudioPlayer} from '../providers/audio-player';
-
+import { CacheModule } from 'ionic-cache';
 import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
 
 /**
@@ -63,6 +63,7 @@ export function myCustomAudioProviderFactory() {
     BrowserModule,
     IonicAudioModule.forRoot(myCustomAudioProviderFactory),
     IonicModule.forRoot(MyApp),
+    CacheModule.forRoot(),
     HttpClientModule,
   
     /* TranslateModule.forRoot({

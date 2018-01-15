@@ -4,12 +4,16 @@
   
 
  <ion-list>
-     
+     <h2>
       <button ion-item *ngFor = "let p of matchedpoems" (click)="viewPoem(p.name)">
         
         {{p.name}}
       </button>
+    </h2>
+    <p>
+      {{p.author}}
 
+    </p>
 
 
     </ion-list>

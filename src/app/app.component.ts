@@ -72,7 +72,10 @@ export class MyApp {
   }
 
   presentPopover() {
-    let popover = this.popoverCtrl.create(PlayListComponent, {"audioPlayer": this._audioPlayer});
+    let popover = this.popoverCtrl.create(PlayListComponent
+     , {"audioPlayer": this._audioPlayer}
+     , {cssClass: 'popover-page'}
+    );
     popover.present();
   }
 

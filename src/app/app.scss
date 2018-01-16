@@ -29,3 +29,33 @@ height : 30px !important;
 max-width: 100px !important;  //any size
 max-height: 30px !important; //any size 
 }
+
+.popover-page {
+
+        width:100%;
+        ion-content
+        {
+            width:100%;
+            div
+            {
+    
+                width:100%;
+            }
+        }
+        
+    }
+
+    .popover-page .popover-content{
+
+        width:100%;
+        left:0px;
+        bottom:0px;
+    }   
+
+    .popover-page .popover-wrapper{
+        
+                width:100%;
+                left:0px;
+            }   
+            
+    

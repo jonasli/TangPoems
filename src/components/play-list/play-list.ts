@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { AudioPlayer } from '../../providers/audio-player';
-import { ITrackConstraint } from '_ionic-audio@3.2.0@ionic-audio';
-import { PopoverController } from '_ionic-angular@3.9.2@ionic-angular';
-import { OnInit } from '_@angular_core@5.2.0@@angular/core/src/metadata/lifecycle_hooks';
+import { ITrackConstraint } from 'ionic-audio';
+import { PopoverController } from 'ionic-angular';
+ 
 
 /**
  * Generated class for the PlayListComponent component.

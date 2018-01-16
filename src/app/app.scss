@@ -33,9 +33,11 @@ max-height: 30px !important; //any size
 .popover-page {
 
         width:100%;
+        height: auto !important;
         ion-content
         {
             width:100%;
+            height: auto !important;
             div
             {
     
@@ -48,6 +50,7 @@ max-height: 30px !important; //any size
     .popover-page .popover-content{
 
         width:100%;
+        height: auto !important;
         left:0px;
         bottom:0px;
     }   
@@ -56,6 +59,7 @@ max-height: 30px !important; //any size
         
                 width:100%;
                 left:0px;
+                height: auto !important;
             }   
             
-    
+   

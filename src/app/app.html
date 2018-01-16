@@ -21,34 +21,35 @@
 
 <ion-footer>
   <ion-toolbar >
-   <ion-row  >
-      <ion-col col-11 >
-        <audio-track #audio [track]="_audioPlayer.current" *ngIf="_audioPlayer.current">
+ 
+  
+        <audio-track #audio [track]="_audioPlayer.current" *ngIf="_audioPlayer.current" start>
             <ion-item>  
-              <ion-thumbnail item-left>
-                  <ion-avatar class="item-avatar" >
+          <ion-thumbnail item-left>
+                  <ion-avatar   >
               
-                    <img src="{{audioPlayer.current.art}}" class="circle-pic" >
+                    <img src="{{audioPlayer.current.art}}" >
                   </ion-avatar>
                 <audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
-              </ion-thumbnail>
-              <div item-content  >
+              </ion-thumbnail>  
+              <div item-content item-left >
+
                 <h2  (click)="viewPoem(_audioPlayer.current)" >{{_audioPlayer.current.title}} </h2> 
-             <!--    <audio-track-progress-bar dark duration progress 
+               </div>
+               <div item-content item-left >
+                <p>{{_audioPlayer.current.artist}}</p>
+                <!--    <audio-track-progress-bar dark duration progress 
                 [audioTrack]="audio" 
                 [ngStyle]="{visibility: audio.completed > 0 ? 'visible' : 'visible' }"></audio-track-progress-bar> -->
               </div>
             </ion-item>    
           </audio-track>
 
-
-      </ion-col>
-      <ion-col col-1 style="font-size:30px;" >
-          
-          <button  (click)="presentPopover()">
-            <ion-icon name="list" style="font-size: 30px !important;" item-end ></ion-icon>
+          <ion-buttons end>
+          <button  (click)="presentPopover()" >
+            <ion-icon name="musical-notes" style="font-size: 60px !important;" item-end ></ion-icon>
           </button>
-      </ion-col>
-   </ion-row>
+          </ion-buttons>
+ 
   </ion-toolbar>
 </ion-footer>

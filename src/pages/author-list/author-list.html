@@ -23,14 +23,16 @@
     <ion-list-header></ion-list-header>
 
     <ion-item *ngFor = "let p of matchedpoets">
+      
       <ion-thumbnail item-left>
        
         <img src="{{p.image}}">
      
       </ion-thumbnail>
-      <h2>{{p.name}}</h2>
-      <p>{{p.bio}}</p>
-      <button ion-button clear item-right (click) = "viewPoetDetail($event, p)">View</button>
+     <!--  <button ion-button clear item-right (click) = "viewPoetDetail($event, p)"></button>  -->
+      <h2 (click) = "viewPoetDetail($event, p)">{{p.name}}</h2>
+      <p>{{p.bio}}唐代诗人</p>
+ 
     </ion-item>
   </ion-list>
 </ion-content>

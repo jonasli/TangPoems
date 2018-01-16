@@ -18,21 +18,18 @@ export class AudioPlayer {
 	stream:any;
 	promise:any;
 	status: PlayerState;
-	public playlist: ITrackConstraint[];
+	public playlist: ITrackConstraint[] = [];
 	public current:	ITrackConstraint;
 	
 
-	constructor(
-		// , private audioProvider: AudioProvider
+	constructor() {
 		
-	) {
-		this.playlist=[];
 		this.status=PlayerState.idle;
 	};
 
 	play(track: ITrackConstraint) {
 		this.current=track;
-
+ 
 		this.playlist.push(track);
 	/* 	this.stream = new Audio(this.url);
 		this.stream.play();
@@ -49,16 +46,7 @@ export class AudioPlayer {
 		return this.promise; */
 	};
 
-	addPlay(track:ITrackConstraint)
-	{
-		if(this.playlist.length==0)
-			this.play(track);
-		else
-		{
-			this.playlist.push(track);
-			this.play(track);
-		}
-	}
+	 
 
 	add(track:ITrackConstraint)
 	{
@@ -70,8 +58,7 @@ export class AudioPlayer {
 
 	remove(track:ITrackConstraint)
 	{
-
-		 
+		this.playlist=this.playlist.filter(i=>{return i.title!=track.title});
 	}
 
 	pause() {

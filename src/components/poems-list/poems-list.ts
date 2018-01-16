@@ -76,7 +76,7 @@ export class PoemsListComponent implements OnInit {
  
         var poet = this.poetService.getPoet(data[0].author);
 
-        this._audioPlayer.current={
+        this._audioPlayer.play({
           src: "/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
           artist: data[0].author,
           title: data[0].name,
@@ -84,7 +84,7 @@ export class PoemsListComponent implements OnInit {
           preload: 'metadata',
           //id: i
 
-        } ;
+        } );
         console.log(data[0]);
         if(this.loading!=null)
         {

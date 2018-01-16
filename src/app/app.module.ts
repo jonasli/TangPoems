@@ -20,6 +20,7 @@ import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
 import { MainPipe} from "../pipes/pipe.module";
 //import { NativeAudio } from '@ionic-native/native-audio';
 import { PoemsListComponent } from "../components/poems-list/poems-list";
+import { PlayListComponent } from "../components/play-list/play-list";
 import { PoemsListPage } from "../pages/poems-list/poems-list";
 import { Media, MediaObject } from '@ionic-native/media';
 import { SettingsPage } from "../pages/settings/settings";
@@ -56,6 +57,7 @@ export function myCustomAudioProviderFactory() {
     PoetDetailComponent,
     PoemDetailComponent ,
     PoemsListComponent,
+    PlayListComponent,
     SettingsPage,
     FavoritePage 
   ],
@@ -87,6 +89,7 @@ export function myCustomAudioProviderFactory() {
     PoetDetailComponent,
     PoemDetailComponent ,
     PoemsListComponent,
+    PlayListComponent,
     SettingsPage,
     FavoritePage 
   ],

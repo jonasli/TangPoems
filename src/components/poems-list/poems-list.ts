@@ -36,6 +36,11 @@ export class PoemsListComponent implements OnInit {
     
   }
 
+
+  getKeys(item) {
+    return Object.keys(item);
+   }
+
   ngOnInit(){
     //called after the constructor and called  after the first ngOnChanges()
 

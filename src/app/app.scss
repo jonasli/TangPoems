@@ -14,7 +14,40 @@
 // To declare rules for a specific mode, create a child rule
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
+.footbar{
+    height:30px;
+    ion-thumbnail{
+        height:30px;
+        ion-avatar
+        {
+            height:30px;
+            img
+            {
+                height:40px;
+                width:40px;
+                margin-top:8px;
 
+            }
+        }
+        audio-track-play
+        {
+            height:30px;
+            width:30px;
+            button{
+                height:30px;
+                width:30px;
+                margin-left:0px;
+                span ion-icon{
+                    height:30px;
+                    width:30px;
+                    margin-left:-28px;
+                    margin-top:10px;
+                }
+            }
+        }
+    }
+    
+}
 
 .circle-pic{ 
     width:30px; 
@@ -31,7 +64,7 @@ max-height: 30px !important; //any size
 }
 
 .popover-page {
-
+        left:0px;
         width:100%;
         height: auto !important;
         div

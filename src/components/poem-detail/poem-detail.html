@@ -1,36 +1,37 @@
 <ion-card>
-<ion-card-title class="poem-title">
-        {{poem.name}} 
-</ion-card-title>
-   <p class="poem-title">
-        <button ion-button clear item-left (click)="viewPoetDetail(poem.author)">{{poem.author}}</button>
-   </p>
-<ion-card-content>
+  <ion-card-title class="poem-title">
+    {{poem.name}}
+  </ion-card-title>
+  <p class="poem-title">
+    <button ion-button clear item-left (click)="viewPoetDetail(poem.author)">{{poem.author}}</button>
+  </p>
+  <ion-card-content>
 
-<ion-list no-lines>
-  <ion-item class="poem-body" *ngFor = "let line of poem.body; let i = index" >
-     <div   [innerHTML]="line | poembodyannotation:  poem.annotation :  i+1 ">
-     </div>
-    </ion-item>
-</ion-list>
+    <ion-list no-lines>
+      <ion-item class="poem-body" *ngFor="let line of poem.body; let i = index">
+        <div [innerHTML]="line | poembodyannotation:  poem.annotation :  i+1 ">
+        </div>
+      </ion-item>
+    </ion-list>
 
-<ion-list>
-    <ion-list-header>译文和注释</ion-list-header>
-    <ion-item class="poem-annotation" *ngFor = "let anno of poem.annotation; let i = index" >
-        <p>{{anno.plaintext}}</p> 
-        <p>{{anno.notes}}</p> 
-    </ion-item>
-</ion-list>
+    <ion-card *ngFor="let anno of poem.annotation; let i = index">
+      <ion-card-content>
+        <div class="poem-annotation">
+          <p>{{anno.plaintext}}</p>
+          <p>{{anno.notes}}</p>
 
-<!-- <ion-list >
+        </div>
+      </ion-card-content>
+    </ion-card>
+    <!-- <ion-list >
     <ion-list-header>赏析</ion-list-header>
     <p *ngFor = "let appre of poem.appreciation; let i = index" >
         <button ion-button clear item-left (click)="viewAppreciation(appre.source)"> {{appre.details}}</button>
     </p>
 </ion-list> -->
-</ion-card-content>
+  </ion-card-content>
 
-<!--     <ion-row no-padding>
+  <!--     <ion-row no-padding>
       <ion-col>
         <button ion-button clear    icon-left>
           <ion-icon name='star'></ion-icon>

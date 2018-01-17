@@ -34,13 +34,14 @@ max-height: 30px !important; //any size
 
         width:100%;
         height: auto !important;
-        ion-content
+        div
         {
             width:100%;
+            left:0px;
             height: auto !important;
             div
             {
-    
+                left:0px;
                 width:100%;
             }
         }

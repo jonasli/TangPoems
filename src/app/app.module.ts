@@ -31,7 +31,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {AudioPlayer} from '../providers/audio-player';
 import { CacheModule,CacheService } from 'ionic-cache';
-import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory } from 'ionic-audio';
+import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory,AudioProvider } from 'ionic-audio';
 
 /**
  * Sample custom factory function to use with ionic-audio

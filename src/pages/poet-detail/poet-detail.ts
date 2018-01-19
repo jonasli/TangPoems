@@ -4,7 +4,7 @@ import { PoetDetailComponent } from '../../components/poet-detail/poet-detail';
 import { IPoet } from "../../models/IPoet";
 import { IPoem } from "../../models/IPoem";
 import { PoetService } from '../../providers/poet-service';
-import { ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
+import { IAudioTrack, CordovaAudioTrack } from 'ionic-audio';
 
 /*
   Generated class for the PoetDetail page.
@@ -18,7 +18,7 @@ import { ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
 })
 export class PoetDetailPage {
   public poet: IPoet;
-  public tracks: ITrackConstraint[];
+  public tracks: IAudioTrack[];
   //public poems :IPoem[];
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,

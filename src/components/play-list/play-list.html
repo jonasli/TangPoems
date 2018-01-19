@@ -2,20 +2,20 @@
   <ion-navbar>
     
     <ion-buttons start>
-        <button ion-button icon-only  >
-            <ion-icon name="arrow-round-forward"></ion-icon>
+        <button ion-button icon-only (click)="changePlayMode($event)" >
+            <ion-icon name="{{mode}}"></ion-icon>
     
           </button>
-      <button ion-button icon-only  >
+  <!--     <button ion-button icon-only  >
         <ion-icon name="shuffle"></ion-icon>
 
       </button>
       <button ion-button icon-only  >
         <ion-icon name="repeat"></ion-icon>
         
-      </button>
+      </button> -->
     </ion-buttons>
-
+     
     <ion-buttons end>
       <button ion-button icon-only  >
         <ion-icon name="trash"></ion-icon>
@@ -24,7 +24,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content style="left:0px;">
 
 
   <!-- Generated template for the PlayListComponent component -->

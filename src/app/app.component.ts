@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,ChangeDetectorRef } from '@angular/core';
 import { Nav, Platform, NavController, ActionSheetController, PopoverController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -12,7 +12,7 @@ import { AuthorListPage } from '../pages/author-list/author-list';
 import { PoemsListPage } from "../pages/poems-list/poems-list";
 import { SettingsPage } from "../pages/settings/settings";
 import { FavoritePage } from "../pages/favorite/favorite";
-
+import { AudioProvider, IAudioTrack } from 'ionic-audio';
 import { AudioPlayer } from "../providers/audio-player";
 import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
 import { PoetService } from '../providers/poet-service';
@@ -36,7 +36,9 @@ export class MyApp {
     public poetService: PoetService,
     public cache: CacheService,
     public actionSheetCtrl: ActionSheetController,
-    public popoverCtrl: PopoverController
+    public popoverCtrl: PopoverController,
+    private _audioProvider: AudioProvider,
+    private _cdRef: ChangeDetectorRef
   ) {
 
     this.platform.ready().then(() => {
@@ -53,6 +55,8 @@ export class MyApp {
     });
 
     this._audioPlayer = audioPlayer;
+
+    
     // used for an example of ngFor and navigation
     this.pages = [
       { title: '作者查询', component: AuthorListPage, icon: 'search', color: 'faOrange' },
@@ -122,5 +126,13 @@ export class MyApp {
     });
     actionSheet.present();
   }
+
+  onTrackFinished(track: any) {
+    console.log('Track finished', track)
+    var i = this._audioPlayer.next();
+    this._audioProvider.tracks[i].play();
+   // this._cdRef.detectChanges();
+ 
+  } 
 
 }

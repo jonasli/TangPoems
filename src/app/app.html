@@ -23,14 +23,18 @@
   <ion-toolbar >
  
   
-        <audio-track #audio [track]="_audioPlayer.current" *ngIf="_audioPlayer.current" start>
+        <audio-track #audio 
+        [track]="_audioPlayer.current" 
+        *ngIf="_audioPlayer.current" 
+        (onFinish)="onTrackFinished($event)"
+        start>
             <ion-item class="footbar">  
           <ion-thumbnail item-left>
                   <ion-avatar   >
               
                     <img src="{{audioPlayer.current.art}}" >
                   </ion-avatar>
-                <audio-track-play dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
+                <audio-track-play   dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
               </ion-thumbnail>  
               <div item-content item-left >
 

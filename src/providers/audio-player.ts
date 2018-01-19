@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { IPoem } from '../models/IPoem';
 import { PlayerState } from '../models/enums';
-
+import {PlayMode} from '../models/enums';
 import { AudioProvider,ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
 // import { AudioProvider } from 'ionic-audio';
 /*
@@ -18,6 +18,7 @@ export class AudioPlayer {
 	stream:any;
 	promise:any;
 	status: PlayerState;
+	private playMode:PlayMode;
 	public playlist: ITrackConstraint[] = [];
 	public current:	ITrackConstraint;
 	
@@ -25,7 +26,17 @@ export class AudioPlayer {
 	constructor() {
 		
 		this.status=PlayerState.idle;
+		
 	};
+
+	SetMode(mode:PlayMode){
+		this.playMode=mode;
+
+	}
+
+	getMode():PlayMode{
+		return this.playMode;
+	}
 
 	play(track: ITrackConstraint) {
 		this.current=track;
@@ -45,6 +56,36 @@ export class AudioPlayer {
 		});
 		return this.promise; */
 	};
+
+	next()
+	{
+		let nextIndex: number=0;
+		if(this.playMode==PlayMode.forward)
+		{
+			
+			var currentIndex=this.playlist.findIndex(data=>{return this.current.title==data.title});
+			if(currentIndex<(this.playlist.length-1))
+			{
+				nextIndex=++currentIndex;
+				
+			}
+			else
+			{
+				nextIndex=0;
+			}
+			//this.current=this.playlist[nextIndex];
+		}else if(this.playMode==PlayMode.repeat)
+		{
+			nextIndex= this.playlist.findIndex(data=>{return this.current.title==data.title});
+			//this.current=this.current;
+			
+		} 
+		else{
+			nextIndex=Math.floor(Math.random() * this.playlist.length)   ;
+			//this.current=this.playlist[nextIndex];
+		}
+		return nextIndex;
+	}
 
 	 
 

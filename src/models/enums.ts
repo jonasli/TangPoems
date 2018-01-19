@@ -5,3 +5,10 @@ export enum PlayerState {
     error =4 ,
 }
 
+export enum PlayMode {
+    shuffle = 1,
+    repeat =2,
+    forward=3 
+}
+
+

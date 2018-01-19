@@ -4,7 +4,7 @@ import {PoetService} from "../../providers/poet-service";
 import { PoetDetailPage } from "../poet-detail/poet-detail"
 import { IPoet } from "../../models/IPoet";
 import { IPoem } from "../../models/IPoem";
-import { CordovaAudioTrack, ITrackConstraint } from 'ionic-audio';
+import { CordovaAudioTrack, IAudioTrack } from 'ionic-audio';
 /*
   Generated class for the AuthorList page.
 

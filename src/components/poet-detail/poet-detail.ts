@@ -4,9 +4,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Events, NavController, NavParams, LoadingController } from "ionic-angular";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
 import { PoetService } from "../../providers/poet-service";
-import { AudioProvider,ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
+import { AudioProvider,IAudioTrack, CordovaAudioTrack, ITrackConstraint } from 'ionic-audio';
 import { IPoem } from '../../models/IPoem';
 import {AudioPlayer} from '../../providers/audio-player'
+import { PoemTrack } from '../../models/PoemTrack';
 
 /*
   Generated class for the PoetDetail component.
@@ -60,16 +61,22 @@ export class PoetDetailComponent {
 
           this.poems[poem.category].push(poem);
 
+        /*   var track=  new PoemTrack(
+            "/assets/audio/("+poem.author+")"+ poem.name + ".mp3",
+            poem.name,
+            poem.author,
+            this.poet.image,
+             'metadata'
+         )
+ */
           this.tracks.push({
-            src: "/assets/audio/("+poem.author+")"+ poem.name + ".mp3",
-            artist: poem.author,
-            title: poem.name,
-            art: this.poet.image,
-            preload: 'metadata',
-            //id: i
-
-          } );
-      
+        
+            src:"/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
+            title:data[0].name,
+            artist:data[0].author,
+            art:this.poet.image,
+            preload:'metadata' 
+        });
         }
 
         

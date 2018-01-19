@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPoem } from "../../models/IPoem";
+import { PoemTrack } from "../../models/PoemTrack";
 import { LoadingController, NavController, NavParams } from "ionic-angular";
 import { PoetService } from "../../providers/poet-service";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
 import { AudioPlayer } from '../../providers/audio-player';
+ 
 
 /*
   Generated class for the PoemsList component.
@@ -80,16 +82,23 @@ export class PoemsListComponent implements OnInit {
         this.navCtrl.push(PoemDetailPage, {"poem":data[0] });
  
         var poet = this.poetService.getPoet(data[0].author);
+ 
+/*         var track=new  PoemTrack( 
+          "/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
+          data[0].name,
+          data[0].author,
+          poet.image,
+          'metadata' 
+        ); */
 
         this._audioPlayer.play({
-          src: "/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
-          artist: data[0].author,
-          title: data[0].name,
-          art: poet.image,
-          preload: 'metadata',
-          //id: i
-
-        } );
+        
+            src:"/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
+            title:data[0].name,
+            artist:data[0].author,
+            art:poet.image,
+            preload:'metadata' 
+        });
         console.log(data[0]);
         if(this.loading!=null)
         {

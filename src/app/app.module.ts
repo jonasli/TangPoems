@@ -3,21 +3,21 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 
-import {HttpClientModule, HttpClient} from '@angular/common/http';
-import {TranslateModule, TranslateLoader, TranslateService} from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { AuthorListPage } from '../pages/author-list/author-list';
 import { PoetDetailPage } from '../pages/poet-detail/poet-detail';
-import {PoetDetailComponent} from '../components/poet-detail/poet-detail';
-import {PoetService} from '../providers/poet-service';
+import { PoetDetailComponent } from '../components/poet-detail/poet-detail';
+import { PoetService } from '../providers/poet-service';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { PoemDetailComponent } from "../components/poem-detail/poem-detail";
 import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
-import { MainPipe} from "../pipes/pipe.module";
+import { MainPipe } from "../pipes/pipe.module";
 //import { NativeAudio } from '@ionic-native/native-audio';
 import { PoemsListComponent } from "../components/poems-list/poems-list";
 import { PlayListComponent } from "../components/play-list/play-list";
@@ -29,9 +29,9 @@ import { FavoritePage } from "../pages/favorite/favorite";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import {AudioPlayer} from '../providers/audio-player';
-import { CacheModule,CacheService } from 'ionic-cache';
-import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory,AudioProvider } from 'ionic-audio';
+import { AudioPlayer } from '../providers/audio-player';
+import { CacheModule, CacheService } from 'ionic-cache';
+import { IonicAudioModule, WebAudioProvider, CordovaMediaProvider, defaultAudioProviderFactory, AudioProvider } from 'ionic-audio';
 
 /**
  * Sample custom factory function to use with ionic-audio
@@ -55,19 +55,19 @@ export function myCustomAudioProviderFactory() {
     PoemDetailPage,
     PoemsListPage,
     PoetDetailComponent,
-    PoemDetailComponent ,
+    PoemDetailComponent,
     PoemsListComponent,
     PlayListComponent,
     SettingsPage,
-    FavoritePage 
+    FavoritePage
   ],
   imports: [
     BrowserModule,
     IonicAudioModule.forRoot(myCustomAudioProviderFactory),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { backButtonText: '返回', }),
     CacheModule.forRoot(),
     HttpClientModule,
-  
+
     /* TranslateModule.forRoot({
       loader: {
           provide: TranslateLoader,
@@ -87,22 +87,22 @@ export function myCustomAudioProviderFactory() {
     PoemDetailPage,
     PoemsListPage,
     PoetDetailComponent,
-    PoemDetailComponent ,
+    PoemDetailComponent,
     PoemsListComponent,
     PlayListComponent,
     SettingsPage,
-    FavoritePage 
+    FavoritePage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     PoetService,
     InAppBrowser,
-    Media ,
+    Media,
     AudioPlayer,
     CacheService,
     //AudioProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })
-export class AppModule {}
+export class AppModule { }

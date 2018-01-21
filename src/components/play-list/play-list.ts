@@ -1,9 +1,9 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AudioPlayer } from '../../providers/audio-player';
-import { IAudioTrack } from 'ionic-audio';
+import { ITrackConstraint } from 'ionic-audio';
 import { PopoverController } from 'ionic-angular';
 import { PlayMode } from '../../models/enums';
- 
+
 
 /**
  * Generated class for the PlayListComponent component.
@@ -17,49 +17,46 @@ import { PlayMode } from '../../models/enums';
 })
 export class PlayListComponent implements OnInit {
 
-  public mode:string;
+  public mode: string;
 
   ngOnInit(): void {
     this.tracks = this.audioPlayer.playlist;
-    if(this.audioPlayer.getMode()==PlayMode.forward)
-      this.mode="arrow-round-forward";
-    else if(this.audioPlayer.getMode()==PlayMode.repeat)
-      this.mode="repeat";
+    if (this.audioPlayer.getMode() == PlayMode.forward)
+      this.mode = "arrow-round-forward";
+    else if (this.audioPlayer.getMode() == PlayMode.repeat)
+      this.mode = "repeat";
     else
-      this.mode="shuffle";
+      this.mode = "shuffle";
   }
 
-  public tracks: IAudioTrack[];
+  public tracks: ITrackConstraint[];
 
-  
 
-  constructor(public audioPlayer: AudioPlayer 
-    ) {
+
+  constructor(public audioPlayer: AudioPlayer
+  ) {
     console.log('Hello PlayListComponent Component');
-   
+
   }
 
 
 
-  changePlayMode()
-  {
-    if(this.audioPlayer.getMode()==PlayMode.forward)
-    {
+  changePlayMode() {
+    if (this.audioPlayer.getMode() == PlayMode.forward) {
       this.audioPlayer.SetMode(PlayMode.repeat);
-      this.mode="repeat";
+      this.mode = "repeat";
     }
-    else if(this.audioPlayer.getMode()==PlayMode.repeat){
+    else if (this.audioPlayer.getMode() == PlayMode.repeat) {
       this.audioPlayer.SetMode(PlayMode.shuffle);
-      this.mode="repeat";
+      this.mode = "repeat";
     }
 
-    else
-    {
-      this.mode="arrow-round-forward";
+    else {
+      this.mode = "arrow-round-forward";
       this.audioPlayer.SetMode(PlayMode.forward);
     }
-      
-  
+
+
   }
 
 

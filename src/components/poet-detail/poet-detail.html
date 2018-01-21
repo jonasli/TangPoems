@@ -4,48 +4,70 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="card-background-page">
 
   <ion-card>
- 
-    <img class="circle-pic" src="{{poet.image}}"/>
+    <ion-item>
+      <ion-avatar item-start>
+        <img src="{{poet.image}}">
+      </ion-avatar>
+      <h2>{{poet.name}}</h2>
+      <p>{{poet.age}}</p>
+    </ion-item>
+
 
     <ion-card-content>
-      <ion-card-title >
-       <button ion-button outline (click)="viewBiography(poet.bio)">更多生平</button>
-      </ion-card-title>
-     <!-- <p>
-        {{poet.bio}}
-      </p>-->
+      <p>{{poet.bio}}</p>
     </ion-card-content>
 
-<!--     <ion-item>
+    <ion-item>
+      <ion-icon name='albums' item-start style="color: #d03e84"></ion-icon>
+      诗词收录
+      <ion-badge item-end>{{this.poet.poems.length}}</ion-badge>
+    </ion-item>
+
+
+  </ion-card>
+  <!--     <ion-item>
       <ion-icon name='document' item-left style="color: #d03e84"></ion-icon>
       诗歌总数
       <ion-badge item-right>{{poet.poems.length}}</ion-badge>
     </ion-item> -->
-   
-<ion-list *ngFor="let key of  getKeys(poems) ">
-  <ion-list-header>{{key}}</ion-list-header>
-  <ion-item-group>
-    <ion-item *ngFor="let item of poems[key]"  >
-  <!--     <ion-thumbnail item-left>
+
+  <ion-list *ngFor="let key of  getKeys(poems) ">
+    <ion-list-header>{{key}}</ion-list-header>
+    <ion-item-group>
+      <ion-item *ngFor="let item of poems[key]">
+        <!--     <ion-thumbnail item-left>
         <ion-icon name="add" (click)="addToPlayList(item)"></ion-icon>
       </ion-thumbnail> -->
-      <div item-content style="width:80%"  (click)="viewPoem(item)">
-        {{ item.name }}
-      </div>
-     
-    </ion-item>
-  </ion-item-group>
-</ion-list>
-  
-<!--       <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
+
+ 
+          
+            
+ 
+ 
+        <ion-buttons start>
+           
+          <button small>
+            <ion-icon name="add"></ion-icon>
+          </button>
+          <button small>
+            <ion-icon name="bookmark"></ion-icon>
+          </button>
+          {{ item.name }}
+        </ion-buttons>
+
+      </ion-item>
+    </ion-item-group>
+  </ion-list>
+
+  <!--       <button ion-item *ngFor = "let p of poet.poems" (click)="viewPoem(p)">
         
         {{p}}
       </button> -->
-      
-     <!--  <audio-track #audio *ngFor="let track of tracks"  [track]="track" >
+
+  <!--  <audio-track #audio *ngFor="let track of tracks"  [track]="track" >
           <ion-item>  
             <ion-thumbnail item-left>
                 <ion-avatar >
@@ -64,6 +86,6 @@
 
       </ion-item-group> -->
 
-  </ion-card>
+
 
 </ion-content>

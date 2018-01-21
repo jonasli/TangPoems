@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {PoetService} from "../../providers/poet-service";
+import { PoetService } from "../../providers/poet-service";
 import { PoetDetailPage } from "../poet-detail/poet-detail"
 import { IPoet } from "../../models/IPoet";
 import { IPoem } from "../../models/IPoem";
@@ -16,57 +16,60 @@ import { CordovaAudioTrack, IAudioTrack } from 'ionic-audio';
   templateUrl: 'author-list.html'
 })
 export class AuthorListPage {
-    navController: any;
+  navController: any;
 
-  public poets : any = [];
-  matchedpoets:IPoet[];
-  
-  constructor(public navCtrl: NavController, 
-  public navParams: NavParams, 
-  public poetService :PoetService) {
-        this.navController = navCtrl;
-        
-          this.poets = this.poetService.getPoets();
-          this.matchedpoets=this.poets;
+  public poets: any = [];
+  matchedpoets: IPoet[];
+
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public poetService: PoetService) {
+    this.navController = navCtrl;
+
+    this.poetService.getPoets().subscribe(data => {
+      this.poets = data;;
+      this.matchedpoets = this.poets;
+
+    });
  
 
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AuthorListPage');
-    
-    
+
+
 
   }
 
 
   getItems(ev) {
-    
-   
-       // set val to the value of the ev target
-       var val = ev.target.value;
-   
-       // if the value is an empty string don't filter the items
-       if (val && val.trim() != '') {
-         this.matchedpoets = this.poets.filter((item) => {
-           return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1);
-         })
-       }
-       else{
-           this.matchedpoets =this.poets;
-       
-       }
-     }
-
-  viewPoetDetail (event, p:IPoet) {
-
-      
 
 
-         this.navController.push(PoetDetailPage, {"poet":p });
+    // set val to the value of the ev target
+    var val = ev.target.value;
 
-    
-       
+    // if the value is an empty string don't filter the items
+    if (val && val.trim() != '') {
+      this.matchedpoets = this.poets.filter((item) => {
+        return (item.name.toLowerCase().indexOf(val.toLowerCase()) > -1 ) || ( item.pinyin.indexOf(val.toLowerCase())>-1);
+      })
+    }
+    else {
+      this.matchedpoets = this.poets;
+
+    }
+  }
+
+  viewPoetDetail(event, p: IPoet) {
+
+
+
+
+    this.navController.push(PoetDetailPage, { "poet": p });
+
+
+
   }
 
 }

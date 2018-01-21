@@ -1,12 +1,14 @@
 <ion-header>
   <ion-navbar>
-    
+
+
+
     <ion-buttons start>
-        <button ion-button icon-only (click)="changePlayMode($event)" >
-            <ion-icon name="{{mode}}"></ion-icon>
-    
-          </button>
-  <!--     <button ion-button icon-only  >
+      <button ion-button icon-only (click)="changePlayMode($event)">
+        <ion-icon name="{{mode}}"></ion-icon>
+
+      </button>
+      <!--     <button ion-button icon-only  >
         <ion-icon name="shuffle"></ion-icon>
 
       </button>
@@ -14,10 +16,13 @@
         <ion-icon name="repeat"></ion-icon>
         
       </button> -->
+
     </ion-buttons>
-     
+    <ion-item item-start no-lines>{{getMode()}}</ion-item>
+
+
     <ion-buttons end>
-      <button ion-button icon-only  >
+      <button ion-button icon-only (click)="presentConfirm($event)">
         <ion-icon name="trash"></ion-icon>
       </button>
     </ion-buttons>
@@ -28,16 +33,21 @@
 
 
   <!-- Generated template for the PlayListComponent component -->
+
+  <ion-list>
+    <ion-item *ngFor="let t of tracks" >
+      {{t.title}}
+       
+          <ion-icon name="heart-outline" (click)="like(t)" item-end></ion-icon>
+
+      
+          <ion-icon name="remove-circle-outline" (click)="remove(t)" item-end></ion-icon>
+
+      
  
-    <ion-list>
-      <ion-item *ngFor="let t of tracks" style="height:45 * tracks.length">
-        {{t.title}}
-
-        <ion-icon name="heart-outline" item-end></ion-icon>
-        <ion-icon name="remove-circle" item-end></ion-icon>
-      </ion-item>
+    </ion-item>
 
 
-    </ion-list>
- 
+  </ion-list>
+
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AudioPlayer } from '../../providers/audio-player';
 import { ITrackConstraint } from 'ionic-audio';
-import { PopoverController } from 'ionic-angular';
+import { PopoverController, AlertController } from 'ionic-angular';
 import { PlayMode } from '../../models/enums';
 
 
@@ -16,8 +16,16 @@ import { PlayMode } from '../../models/enums';
   templateUrl: 'play-list.html'
 })
 export class PlayListComponent implements OnInit {
-
+  public tracks: ITrackConstraint[];
   public mode: string;
+
+  constructor(public audioPlayer: AudioPlayer,
+    private alertCtrl: AlertController
+  ) {
+    console.log('Hello PlayListComponent Component');
+
+  }
+
 
   ngOnInit(): void {
     this.tracks = this.audioPlayer.playlist;
@@ -28,18 +36,15 @@ export class PlayListComponent implements OnInit {
     else
       this.mode = "shuffle";
   }
-
-  public tracks: ITrackConstraint[];
-
-
-
-  constructor(public audioPlayer: AudioPlayer
-  ) {
-    console.log('Hello PlayListComponent Component');
+  public getMode() {
+    if (this.audioPlayer.getMode() == PlayMode.forward)
+      return "顺序播放";
+    else if (this.audioPlayer.getMode() == PlayMode.repeat)
+      return "循环播放";
+    else
+      return "随机播放";
 
   }
-
-
 
   changePlayMode() {
     if (this.audioPlayer.getMode() == PlayMode.forward) {
@@ -48,7 +53,7 @@ export class PlayListComponent implements OnInit {
     }
     else if (this.audioPlayer.getMode() == PlayMode.repeat) {
       this.audioPlayer.SetMode(PlayMode.shuffle);
-      this.mode = "repeat";
+      this.mode = "shuffle";
     }
 
     else {
@@ -59,6 +64,40 @@ export class PlayListComponent implements OnInit {
 
   }
 
+  presentConfirm() {
+    let alert = this.alertCtrl.create({
+      title: '清除播放列表',
+      message: '确定所有播放列表中的曲目?',
+      buttons: [
+        {
+          text: '取消',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: '确定',
+          handler: () => {
+            this.audioPlayer.trash();
+            this.tracks=[];
+          
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
+  like(t:ITrackConstraint){
+    
+
+  }
+
+  remove(t:ITrackConstraint){
+    this.audioPlayer.remove(t);
+    this.tracks=this.audioPlayer.playlist;
+  }
 
 
 }

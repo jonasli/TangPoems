@@ -29,6 +29,13 @@ export class AudioPlayer {
 		
 	};
 
+	trash()
+	{
+		this.playlist=[];
+		this.current=null;
+		
+	}
+
 	SetMode(mode:PlayMode){
 		this.playMode=mode;
 
@@ -84,6 +91,7 @@ export class AudioPlayer {
 			nextIndex=Math.floor(Math.random() * this.playlist.length)   ;
 			//this.current=this.playlist[nextIndex];
 		}
+		this.current=this.playlist[nextIndex];
 		return nextIndex;
 	}
 
@@ -100,6 +108,12 @@ export class AudioPlayer {
 	remove(track:ITrackConstraint)
 	{
 		this.playlist=this.playlist.filter(i=>{return i.title!=track.title});
+		 
+		if(this.current!=null && this.current.title==track.title)
+		{
+			this.next();
+
+		}
 	}
 
 	pause() {

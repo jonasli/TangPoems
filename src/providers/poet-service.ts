@@ -27,12 +27,25 @@ export class PoetService {
         console.log('Hello PoetService Provider');
         this.poets = [];
         this.getPoems().subscribe(data => { });
+
     }
 
 
 
-    getPoets(): IPoet[] {
-        return this.poets;
+    getPoets(): Observable<IPoet[]> {
+        return this.http
+        .get(poeturl)
+        .map(response => {
+            return response["poets"].sort((a,b)=>{
+                if(a.pinyin<b.pinyin)
+                    return -1;
+                else if(a.pinyin>b.pinyin)
+                    return 1;
+                else 
+                    return 0;
+
+            });
+        });
 
     }
 
@@ -58,7 +71,7 @@ export class PoetService {
         return this.http
             .get(poemurl)
             .map(response => {
-                this.poems = response['poems'];
+             /*    this.poems = response['poems'];
 
                 for (let item of this.poems) {
                     if (this.poets.filter(i => { return i.name == item.author; }).length <= 0) {
@@ -73,7 +86,7 @@ export class PoetService {
                         this.poets.filter(i => { return i.name == item.author; })[0].poems.push(item.name);
 
                     }
-                }
+                } */
                 return response['poems'];
             });;
 

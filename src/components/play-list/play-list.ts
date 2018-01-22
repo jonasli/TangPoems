@@ -28,7 +28,7 @@ export class PlayListComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.tracks = this.audioPlayer.playlist;
+   // this.tracks = this.audioPlayer.playlist;
     if (this.audioPlayer.getMode() == PlayMode.forward)
       this.mode = "arrow-round-forward";
     else if (this.audioPlayer.getMode() == PlayMode.repeat)
@@ -80,7 +80,7 @@ export class PlayListComponent implements OnInit {
           text: '确定',
           handler: () => {
             this.audioPlayer.trash();
-            this.tracks=[];
+            //this.tracks=[];
           
           }
         }
@@ -96,7 +96,7 @@ export class PlayListComponent implements OnInit {
 
   remove(t:ITrackConstraint){
     this.audioPlayer.remove(t);
-    this.tracks=this.audioPlayer.playlist;
+    //this.tracks=this.audioPlayer.playlist;
   }
 
 

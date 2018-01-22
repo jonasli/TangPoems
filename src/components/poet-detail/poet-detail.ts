@@ -61,19 +61,19 @@ export class PoetDetailComponent {
 
           this.poems[poem.category].push(poem);
 
-        /*   var track=  new PoemTrack(
+/*           var track=  new PoemTrack(
             "/assets/audio/("+poem.author+")"+ poem.name + ".mp3",
             poem.name,
             poem.author,
             this.poet.image,
              'metadata'
-         )
- */
+         ) */
+
           this.tracks.push({
         
             src:"/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
-            title:data[0].name,
-            artist:data[0].author,
+            title:poem.name,
+            artist:poem.author,
             art:this.poet.image,
             preload:'metadata' 
         });

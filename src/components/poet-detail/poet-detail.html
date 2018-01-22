@@ -42,20 +42,22 @@
         <ion-icon name="add" (click)="addToPlayList(item)"></ion-icon>
       </ion-thumbnail> -->
 
- 
-          
-            
- 
- 
+
+
+
+
+
         <ion-buttons start>
-           
-          <button small>
+
+          <button  (click)="addToPlayList(item)"  >
             <ion-icon name="add"></ion-icon>
           </button>
-          <button small>
-            <ion-icon name="bookmark"></ion-icon>
+          <button >
+            <ion-icon name="bookmark"  (click)="addBookmark(item)"></ion-icon>
           </button>
-          {{ item.name }}
+          <button   ion-button   clear  color="dark" (click)="viewPoem(item) ">
+            {{ item.name }}
+          </button>
         </ion-buttons>
 
       </ion-item>

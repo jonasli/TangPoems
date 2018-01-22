@@ -35,7 +35,7 @@
   <!-- Generated template for the PlayListComponent component -->
 
   <ion-list>
-    <ion-item *ngFor="let t of tracks" >
+    <ion-item *ngFor="let t of audioPlayer.playlist" >
       {{t.title}}
        
           <ion-icon name="heart-outline" (click)="like(t)" item-end></ion-icon>

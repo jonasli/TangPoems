@@ -30,13 +30,11 @@ export class PoetService {
 
     }
 
-
-
     getPoets(): Observable<IPoet[]> {
         return this.http
         .get(poeturl)
         .map(response => {
-            return response["poets"].sort((a,b)=>{
+            this.poets= response["poets"].sort((a,b)=>{
                 if(a.pinyin<b.pinyin)
                     return -1;
                 else if(a.pinyin>b.pinyin)
@@ -45,8 +43,9 @@ export class PoetService {
                     return 0;
 
             });
-        });
 
+            return this.poets;
+        });
     }
 
 

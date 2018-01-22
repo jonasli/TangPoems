@@ -5,7 +5,7 @@ import { LoadingController, NavController, NavParams } from "ionic-angular";
 import { PoetService } from "../../providers/poet-service";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
 import { AudioPlayer } from '../../providers/audio-player';
-import { ITrackConstraint } from '.3.2.0@ionic-audio';
+import { ITrackConstraint } from 'ionic-audio';
  
 
 /*

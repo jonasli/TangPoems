@@ -71,7 +71,7 @@ export class PoetDetailComponent {
 
           this.tracks.push({
         
-            src:"/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
+            src:poem.source,
             title:poem.name,
             artist:poem.author,
             art:this.poet.image,

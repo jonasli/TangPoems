@@ -3,7 +3,7 @@ export interface IPoem {
     name:string;
     author:string; 
     body:string[];
- 
+    source : string;
     annotation:IAnnotation[];
     appreciation:IAppreciation[];
 

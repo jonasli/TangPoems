@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
-import { TranslateService } from '@ngx-translate/core';
+/* import { TranslateService } from '@ngx-translate/core'; */
 
 
 import { AuthorListPage } from '../pages/author-list/author-list';
@@ -130,7 +130,7 @@ export class MyApp {
   onTrackFinished(track: any) {
     console.log('Track finished', track)
     var i = this._audioPlayer.next();
-    this._audioProvider.tracks[i].play();
+
    // this._cdRef.detectChanges();
  
   } 

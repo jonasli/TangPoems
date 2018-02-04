@@ -4,8 +4,8 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+/* import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader'; */
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -21,6 +21,7 @@ import { MainPipe } from "../pipes/pipe.module";
 //import { NativeAudio } from '@ionic-native/native-audio';
 import { PoemsListComponent } from "../components/poems-list/poems-list";
 import { PlayListComponent } from "../components/play-list/play-list";
+import { PoemAnnotationComponent } from "../components/poem-annotation/poem-annotation";
 import { PoemsListPage } from "../pages/poems-list/poems-list";
 import { Media, MediaObject } from '@ionic-native/media';
 import { SettingsPage } from "../pages/settings/settings";
@@ -58,6 +59,7 @@ export function myCustomAudioProviderFactory() {
     PoemDetailComponent,
     PoemsListComponent,
     PlayListComponent,
+    PoemAnnotationComponent,
     SettingsPage,
     FavoritePage
   ],
@@ -90,6 +92,7 @@ export function myCustomAudioProviderFactory() {
     PoemDetailComponent,
     PoemsListComponent,
     PlayListComponent,
+    PoemAnnotationComponent,
     SettingsPage,
     FavoritePage
   ],

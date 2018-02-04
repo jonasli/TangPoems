@@ -94,7 +94,7 @@ export class PoemsListComponent implements OnInit {
 
         this._audioPlayer.play({
         
-            src:"/assets/audio/("+data[0].author+")"+ data[0].name + ".mp3",
+            src:data[0].source,
             title:data[0].name,
             artist:data[0].author,
             art:poet.image,

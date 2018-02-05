@@ -79,6 +79,7 @@
     <allow-navigation href="http://10.167.168.46:8100" />
     <allow-navigation href="http://192.168.168.110:8100" />
     <engine name="ios" spec="4.5.4" />
+    <engine name="android" spec="6.3.0" />
     <plugin name="cordova-plugin-inappbrowser" spec="^1.7.2" />
     <plugin name="cordova-plugin-media" spec="^4.0.0" />
     <plugin name="cordova-plugin-ionic" spec="^2.0.4">

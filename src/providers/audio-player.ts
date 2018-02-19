@@ -1,10 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Media } from '@ionic-native/media';
+import { NgZone } from '@angular/core';
+import { Storage } from '@ionic/storage';
+import { Platform } from 'ionic-angular';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import { IPoem } from '../models/IPoem';
+import { ITrack } from '../models/ITrack';
 import { PlayerState } from '../models/enums';
-import {PlayMode} from '../models/enums';
-import { AudioProvider,ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
+import { PlayMode } from '../models/enums';
+/* import { AudioProvider, ITrackConstraint, CordovaAudioTrack } from 'ionic-audio'; */
 // import { AudioProvider } from 'ionic-audio';
 /*
   Generated class for the Player provider.
@@ -14,112 +19,165 @@ import { AudioProvider,ITrackConstraint, CordovaAudioTrack } from 'ionic-audio';
 */
 @Injectable()
 export class AudioPlayer {
- 
-	stream:any;
-	promise:any;
+
+	media: any;
+	_ready: Promise<any>;
+
 	status: PlayerState;
-	private playMode:PlayMode;
-	public playlist: ITrackConstraint[] = [];
-	public current:	ITrackConstraint;
-	
+	private playMode: PlayMode;
+	public playlist:ITrack[];
+	public current: ITrack; 
 
-	constructor() {
-		
-		this.status=PlayerState.idle;
-		
-	};
 
-	trash()
-	{
-		this.playlist=[];
-		this.current=null;
-		
+	constructor(private platform: Platform, private cordovaMedia: Media ) {
+		this._ready = new Promise((resolve, reject) => {
+			return this.platform.ready();
+		});
 	}
 
-	SetMode(mode:PlayMode){
-		this.playMode=mode;
+	ready(): Promise<any> {
+		return this._ready;
+	}
+
+
+	trash() {
+		this.playlist = [];
+ 
+	}
+
+	SetMode(mode: PlayMode) {
+		this.playMode = mode;
 
 	}
 
-	getMode():PlayMode{
+	getMode(): PlayMode {
 		return this.playMode;
 	}
 
-	play(track: ITrackConstraint) {
-		this.current=track;
- 
-		this.playlist.push(track);
-	/* 	this.stream = new Audio(this.url);
-		this.stream.play();
-		this.promise = new Promise((resolve,reject) => {
-			this.stream.addEventListener('playing', () => {
-				resolve(true);
-				this.status=PlayerState.playing;
-			});
+	 
+	next() {
+		let nextIndex: number = 0;
+		if (this.playMode == PlayMode.forward) {
 
-			this.stream.addEventListener('error', () => {
-				reject(false);
-			});
-		});
-		return this.promise; */
-	};
+			var currentIndex = this.playlist.findIndex(data => { return this.current.title == data.title });
+			if (currentIndex < (this.playlist.length - 1)) {
+				nextIndex = ++currentIndex;
 
-	next()
-	{
-		let nextIndex: number=0;
-		if(this.playMode==PlayMode.forward)
-		{
-			
-			var currentIndex=this.playlist.findIndex(data=>{return this.current.title==data.title});
-			if(currentIndex<(this.playlist.length-1))
-			{
-				nextIndex=++currentIndex;
-				
 			}
-			else
-			{
-				nextIndex=0;
+			else {
+				nextIndex = 0;
 			}
 			//this.current=this.playlist[nextIndex];
-		}else if(this.playMode==PlayMode.repeat)
-		{
-			nextIndex= this.playlist.findIndex(data=>{return this.current.title==data.title});
+		} else if (this.playMode == PlayMode.repeat) {
+			nextIndex = this.playlist.findIndex(data => { return this.current.title == data.title });
 			//this.current=this.current;
-			
-		} 
-		else{
-			nextIndex=Math.floor(Math.random() * this.playlist.length)   ;
+
+		}
+		else {
+			nextIndex = Math.floor(Math.random() * this.playlist.length);
 			//this.current=this.playlist[nextIndex];
 		}
 		this.current=this.playlist[nextIndex];
+		this.play(this.current);
 		return nextIndex;
 	}
 
-	 
 
-	add(track:ITrackConstraint)
-	{
-		if(this.playlist.length==0)
+
+	add(track: ITrack) {
+		if (this.playlist.length == 0)
 			this.play(track);
 		else
 			this.playlist.push(track);
 	}
 
-	remove(track:ITrackConstraint)
-	{
-		this.playlist=this.playlist.filter(i=>{return i.title!=track.title});
-		 
-		if(this.current!=null && this.current.title==track.title)
-		{
+	remove(track: ITrack) {
+		this.playlist = this.playlist.filter(i => { return i.title != track.title });
+
+		if (this.current != null && this.current.title == track.title) {
 			this.next();
 
 		}
 	}
 
-	pause() {
-		this.stream.pause();
-		this.status=PlayerState.pause;
-	};
+	/* Plays a sound, stopping other playing sounds if necessary */
+	play(sound:ITrack) {
+		this.stopPlayback();
 
- 
+		/* Plays with Cordova Audio if available, falls back on Web Audio.
+		 * If something goes wrong in playing with Cordova Audio, play with
+		 * Web Audio as well
+		 */
+		if (window.hasOwnProperty('cordova') && window.hasOwnProperty('Media')) {
+			try {
+				this.playWithCordovaAudio(sound);
+			} catch (error) {
+				if (sound.remoteSrc) {
+					this.playWithWebAudio(sound, sound.remoteSrc);
+				} else {
+					this.playWithWebAudio(sound);
+				}
+			}
+		} else {
+			this.playWithWebAudio(sound);
+		}
+	}
+
+	playWithWebAudio(sound, alternativeSrc = null) {
+		const src = alternativeSrc || sound.src;
+		this.media = new Audio(src);
+
+		/* Adding event listeners to update the sound's isPlaying attribute accordingly */
+		this.media.onended = () => {
+			sound.isPlaying = false;
+		};
+		this.media.onpause = () => {
+			sound.isPlaying = false;
+		};
+		this.media.onplay = () => {
+			sound.isPlaying = true;
+		};
+
+		this.media.load();
+		this.media.play();
+	}
+
+	playWithCordovaAudio(sound) {
+		this.media = this.cordovaMedia.create(sound.src);
+
+		/* Adding status callback to update the sound's isPlaying attribute accordingly */
+		this.media.statusCallback = status => {
+			/* Run this in ngZone to propagate changes to the UI */
+			this.zone.run(() => {
+				switch (status) {
+					case this.cordovaMedia.MEDIA_RUNNING:
+						sound.isPlaying = true;
+						break;
+					case this.cordovaMedia.MEDIA_PAUSED:
+						sound.isPlaying = false;
+						break;
+					case this.cordovaMedia.MEDIA_STOPPED:
+						sound.isPlaying = false;
+						break;
+				}
+			});
+		};
+
+		this.media.play();
+	}
+
+	/* Stops the playback of the sound */
+	stopPlayback() {
+		if (this.media) {
+			if (this.media.release) {
+				this.media.stop();
+				this.media.release();
+			} else {
+				this.media.pause();
+			}
+			this.media = null;
+		}
+	}
+
+
 }

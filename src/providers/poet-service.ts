@@ -86,7 +86,12 @@ export class PoetService {
 
                     }
                 } */
-                return response['poems'];
+                return response['poems'].map(
+                    data=>{
+                  
+                        return data;
+                    }
+                );
             });;
 
     }

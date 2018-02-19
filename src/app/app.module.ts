@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-
+import { IonicApp, IonicErrorHandler, IonicModule, Platform } from 'ionic-angular';
+ 
 
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 /* import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
@@ -102,6 +102,7 @@ export function myCustomAudioProviderFactory() {
     PoetService,
     InAppBrowser,
     Media,
+    Platform,
     AudioPlayer,
     CacheService,
     //AudioProvider,

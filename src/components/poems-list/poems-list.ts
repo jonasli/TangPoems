@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { IPoem } from "../../models/IPoem";
-import { PoemTrack } from "../../models/PoemTrack";
+import { ITrack } from "../../models/ITrack";
 import { LoadingController, NavController, NavParams } from "ionic-angular";
 import { PoetService } from "../../providers/poet-service";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
@@ -98,7 +98,10 @@ export class PoemsListComponent implements OnInit {
             title:data[0].name,
             artist:data[0].author,
             art:poet.image,
-            preload:'metadata' 
+            remoteSrc:null,
+            isPlaying:false
+
+            
         });
         console.log(data[0]);
         if(this.loading!=null)

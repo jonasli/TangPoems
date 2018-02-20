@@ -4,10 +4,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Events, NavController, NavParams, LoadingController } from "ionic-angular";
 import { PoemDetailPage } from "../../pages/poem-detail/poem-detail";
 import { PoetService } from "../../providers/poet-service";
-import { AudioProvider,IAudioTrack, CordovaAudioTrack, ITrackConstraint } from 'ionic-audio';
 import { IPoem } from '../../models/IPoem';
 import {AudioPlayer} from '../../providers/audio-player'
-import { PoemTrack } from '../../models/PoemTrack';
+import { ITrack } from '../../models/ITrack';
 
 /*
   Generated class for the PoetDetail component.
@@ -23,7 +22,7 @@ export class PoetDetailComponent {
     navController: any;
 
   @Input() poet: IPoet  ;
-  tracks: ITrackConstraint[]  ;
+  tracks: ITrack[]  ;
   poems: {[key :string] : IPoem[]};
   _audioPlayer : AudioPlayer;
   browser:any;
@@ -36,7 +35,6 @@ export class PoetDetailComponent {
     public navParams: NavParams,
     public poetService :PoetService,
     public loadingCtrl: LoadingController,
-    private _audioProvider: AudioProvider,
     public audioPlayer:AudioPlayer
   ) {
     this._audioPlayer= audioPlayer;
@@ -75,7 +73,8 @@ export class PoetDetailComponent {
             title:poem.name,
             artist:poem.author,
             art:this.poet.image,
-            preload:'metadata' 
+            remoteSrc:null,
+            isPlaying:false
         });
         }
 

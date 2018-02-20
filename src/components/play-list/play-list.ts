@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { AudioPlayer } from '../../providers/audio-player';
-import { ITrackConstraint } from 'ionic-audio';
+import { ITrack } from '../../models/ITrack';
 import { PopoverController, AlertController } from 'ionic-angular';
 import { PlayMode } from '../../models/enums';
+ 
 
 
 /**
@@ -16,7 +17,7 @@ import { PlayMode } from '../../models/enums';
   templateUrl: 'play-list.html'
 })
 export class PlayListComponent implements OnInit {
-  public tracks: ITrackConstraint[];
+  public tracks: ITrack[];
   public mode: string;
 
   constructor(public audioPlayer: AudioPlayer,
@@ -89,12 +90,12 @@ export class PlayListComponent implements OnInit {
     alert.present();
   }
 
-  like(t:ITrackConstraint){
+  like(t:ITrack){
     
 
   }
 
-  remove(t:ITrackConstraint){
+  remove(t:ITrack){
     this.audioPlayer.remove(t);
     //this.tracks=this.audioPlayer.playlist;
   }

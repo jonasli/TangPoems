@@ -20,40 +20,44 @@
 <ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
 
 <ion-footer>
-  <ion-toolbar >
- 
+  <ion-toolbar>
+    <!-- 
   
         <audio-track #audio 
         [track]="_audioPlayer.current" 
         *ngIf="_audioPlayer.current" 
         (onFinish)="onTrackFinished($event)"
-        start>
-            <ion-item class="footbar">  
-          <ion-thumbnail item-left>
-                  <ion-avatar   >
-              
-                    <img src="{{audioPlayer.current.art}}" >
-                  </ion-avatar>
-                <audio-track-play   dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>  
-              </ion-thumbnail>  
-              <div item-content item-left >
+        start> -->
+    <ion-item class="footbar" *ngIf="_audioPlayer.current" >
+      <ion-thumbnail item-left  >
+        <ion-avatar>
 
-                <h2  (click)="viewPoem(_audioPlayer.current)" >{{_audioPlayer.current.title}} </h2> 
-               </div>
-               <div item-content item-left >
-                <p>{{_audioPlayer.current.artist}}</p>
-                <!--    <audio-track-progress-bar dark duration progress 
+          <img src="{{_audioPlayer.current.art}}">
+        </ion-avatar>
+        <!--      <audio-track-play   dark [audioTrack]="audio"><ion-spinner></ion-spinner></audio-track-play>   -->
+      </ion-thumbnail>
+
+      <ion-icon *ngIf="!_audioPlayer.current.isPlaying" name="play" item-start (click)="Play(_audioPlayer.current)"></ion-icon>
+      <ion-icon *ngIf="_audioPlayer.current.isPlaying" name="square" item-start (click)="stopPlayback()"></ion-icon>
+
+      <div item-content item-left>
+
+        <h2 (click)="viewPoem(_audioPlayer.current)">{{_audioPlayer.current.title}} </h2>
+      </div>
+      <div item-content item-left>
+        <p>{{_audioPlayer.current.artist}}</p>
+        <!--    <audio-track-progress-bar dark duration progress 
                 [audioTrack]="audio" 
                 [ngStyle]="{visibility: audio.completed > 0 ? 'visible' : 'visible' }"></audio-track-progress-bar> -->
-              </div>
-            </ion-item>    
-          </audio-track>
+      </div>
+    </ion-item>
+    <!--           </audio-track> -->
 
-          <ion-buttons end>
-          <button  (click)="presentPopover()" >
-            <ion-icon name="musical-notes" style="font-size: 30px !important;"  ></ion-icon>
-          </button>
-          </ion-buttons>
- 
+    <ion-buttons end>
+      <button (click)="presentPopover()">
+        <ion-icon name="musical-notes" style="font-size: 30px !important;"></ion-icon>
+      </button>
+    </ion-buttons>
+
   </ion-toolbar>
 </ion-footer>

@@ -7,12 +7,11 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 /* import { TranslateService } from '@ngx-translate/core'; */
 
-
+import { ITrack } from '../models/ITrack';
 import { AuthorListPage } from '../pages/author-list/author-list';
 import { PoemsListPage } from "../pages/poems-list/poems-list";
 import { SettingsPage } from "../pages/settings/settings";
 import { FavoritePage } from "../pages/favorite/favorite";
-import { AudioProvider, IAudioTrack } from 'ionic-audio';
 import { AudioPlayer } from "../providers/audio-player";
 import { PoemDetailPage } from "../pages/poem-detail/poem-detail";
 import { PoetService } from '../providers/poet-service';
@@ -37,7 +36,7 @@ export class MyApp {
     public cache: CacheService,
     public actionSheetCtrl: ActionSheetController,
     public popoverCtrl: PopoverController,
-    private _audioProvider: AudioProvider,
+ 
     private _cdRef: ChangeDetectorRef
   ) {
 
@@ -127,12 +126,9 @@ export class MyApp {
     actionSheet.present();
   }
 
-  onTrackFinished(track: any) {
-    console.log('Track finished', track)
-    var i = this._audioPlayer.next();
-
-   // this._cdRef.detectChanges();
- 
-  } 
+  Play(sound:ITrack)
+  {
+    this._audioPlayer.play(sound);
+  }
 
 }

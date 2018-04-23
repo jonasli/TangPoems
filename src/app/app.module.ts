@@ -102,7 +102,7 @@ export function myCustomAudioProviderFactory() {
     PoetService,
     InAppBrowser,
     Media,
-    Platform,
+ 
     AudioPlayer,
     CacheService,
     //AudioProvider,

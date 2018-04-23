@@ -29,7 +29,10 @@ export class AudioPlayer {
 	public current: ITrack; 
 
 
-	constructor(private platform: Platform, private cordovaMedia: Media ) {
+	constructor(private platform: Platform, 
+		private cordovaMedia: Media,
+		private zone: NgZone
+	 ) {
 		this._ready = new Promise((resolve, reject) => {
 			return this.platform.ready();
 		});
